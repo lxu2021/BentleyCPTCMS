@@ -1,0 +1,235 @@
+@(title: String)(head:Html)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>@title</title>
+
+        <!-- Global stylesheets -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+        <link href="@routes.Assets.versioned("css/icons/icomoon/styles.min.css")" rel="stylesheet" type="text/css">
+        <link href="@routes.Assets.versioned("css/bootstrap.min.css")" rel="stylesheet" type="text/css">
+        <link href="@routes.Assets.versioned("css/bootstrap_limitless.min.css")" rel="stylesheet" type="text/css">
+        <link href="@routes.Assets.versioned("css/layout.min.css")" rel="stylesheet" type="text/css">
+        <link href="@routes.Assets.versioned("css/components.min.css")" rel="stylesheet" type="text/css">
+        <link href="@routes.Assets.versioned("css/colors.min.css")" rel="stylesheet" type="text/css">
+        <!-- /global stylesheets -->
+
+        <!-- Core JS files -->
+        <script src="@routes.Assets.versioned("js/main/jquery.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/main/bootstrap.bundle.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/plugins/loaders/blockui.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/plugins/ui/ripple.min.js")" type="text/javascript"></script>
+        <!-- /core JS files -->
+
+        <!-- Theme JS files -->
+        <script src="@routes.Assets.versioned("js/plugins/visualization/d3/d3.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/plugins/visualization/d3/d3_tooltip.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/plugins/forms/styling/switchery.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/plugins/ui/moment/moment.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/plugins/pickers/daterangepicker.js")" type="text/javascript"></script>
+
+		<script src="@routes.Assets.versioned("js/demo_pages/form_wizard.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/demo_pages/widgets_stats.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/app.js")"></script>
+        <script src="@routes.Assets.versioned("js/demo_pages/dashboard.js") type="text/javascript""></script>
+        <script src="@routes.Assets.versioned("js/demo_charts/pages/dashboard/light/streamgraph.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/demo_charts/pages/dashboard/light/sparklines.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/demo_charts/pages/dashboard/light/lines.js")" type="text/javascript"></script>  
+        <script src="@routes.Assets.versioned("js/demo_charts/pages/dashboard/light/areas.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/demo_charts/pages/dashboard/light/donus.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/demo_charts/pages/dashboard/light/bars.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/demo_charts/pages/dashboard/light/progress.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/demo_charts/pages/dashboard/light/heatmaps.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/demo_charts/pages/dashboard/light/pies.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/demo_charts/pages/dashboard/light/bullets.js")" type="text/javascript"></script>
+        <!-- /theme JS files -->
+        
+        
+    </head>
+    
+    <body >
+
+        <!-- Main navbar -->
+        <div class="navbar navbar-expand-md navbar-light navbar-static">
+
+            <!-- Header with logos -->
+            <div class="navbar-header navbar-dark d-none d-md-flex align-items-md-center">
+                <div class="navbar-brand navbar-brand-md">
+                    <a href="/" class="d-inline-block">
+                        <img src="@routes.Assets.versioned("images/logo_light.png")" alt="">
+                    </a>
+                </div>
+                
+                <div class="navbar-brand navbar-brand-xs">
+                    <a href="/" class="d-inline-block">
+                        <img src="@routes.Assets.versioned("images/logo_icon_light.png")" alt="">
+                    </a>
+                </div>
+            </div>
+            <!-- /header with logos -->
+        
+
+            <!-- Mobile controls -->
+            <div class="d-flex flex-1 d-md-none">
+                <div class="navbar-brand mr-auto">
+                    <a href="/" class="d-inline-block">
+                        <img src="@routes.Assets.versioned("images/logo_dark.png")" alt="" width="300" height="95">
+                    </a>
+                </div>  
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+                    <i class="icon-tree5"></i>
+                </button>
+
+                <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+                    <i class="icon-paragraph-justify3"></i>
+                </button>
+            </div>
+            <!-- /mobile controls -->
+
+
+            <!-- Navbar content -->
+            <div class="collapse navbar-collapse" id="navbar-mobile">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
+                            <i class="icon-paragraph-justify3"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav">
+
+                    <li class="nav-item dropdown dropdown-user">
+                        @head
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="#" class="dropdown-item"><i class="icon-switch2"></i>Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- /navbar content -->
+            
+        </div>
+        <!-- /main navbar -->
+
+                        
+        <!-- Page content -->
+        <div class="page-content">
+
+            <!-- Main sidebar -->
+            <div class="sidebar sidebar-dark sidebar-main sidebar-expand-md">
+
+                <!-- Sidebar mobile toggler -->
+                <div class="sidebar-mobile-toggler text-center">
+                    <a href="#" class="sidebar-mobile-main-toggle">
+                        <i class="icon-arrow-left8"></i>
+                    </a>
+                    Navigation
+                    <a href="#" class="sidebar-mobile-expand">
+                        <i class="icon-screen-full"></i>
+                        <i class="icon-screen-normal"></i>
+                    </a>
+                </div>
+                <!-- /sidebar mobile toggler -->
+
+
+                <!-- Sidebar content -->
+                <div class="sidebar-content">
+                    
+                    <!-- User menu -->
+                    <div class="sidebar-user-material">
+                        <div class="sidebar-user-material-body">
+                            <div class="card-body text-center">
+                                <a href="#">
+                                    <img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
+                                </a>
+                                <h6 class="mb-0 text-white text-shadow-dark">Lincoln Matra</h6>
+                                <span class="font-size-sm text-white text-shadow-dark">Boston, MA</span>
+                            </div>
+                                                        
+                        </div>
+                    </div>
+                    <!-- /user menu -->
+                    
+                    <!-- Main navigation -->
+                    <div class="card card-sidebar-mobile">
+                        <ul class="nav nav-sidebar" data-nav-type="accordion">
+
+                            <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Navigation</div> <i class="icon-menu" title="Layout options"></i></li>
+                            <li class="nav-item">
+                                <a href="/" class="nav-link active">
+                                    <i class="icon-home4"></i>
+                                    <span>
+                                        Dashboard
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item nav-item-submenu">
+                                <a href="/process" class="nav-link"><i class="icon-stack2"></i> <span>Process</span></a>
+                            </li>
+                            <li class="nav-item nav-item-submenu">
+                                <a href="/department" class="nav-link"><i class="icon-page-break2"></i> <span>Department</span></a>
+                            </li>
+                            <li class="nav-item nav-item-submenu">
+                                <a href="/form" class="nav-link"><i class="icon-indent-decrease2"></i> <span>Form</span></a>
+                            </li>                                
+                        </ul>
+                    </div>
+                    <!-- /main navigation -->
+                </div>
+                <!-- /sidebar content -->                
+            </div>
+            <!-- /main sidebar -->
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+                <!-- Page header -->
+                <div class="page-header">
+                    <div class="page-header-content header-elements-md-inline">
+                        <div class="page-title d-flex">
+                            <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Home</span> - Dashboard</h4>
+                            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /page header -->
+
+
+                <!-- Content area -->
+                @content
+
+                <!-- /content area -->
+
+
+                <!-- Footer -->
+                <div class="navbar navbar-expand-lg navbar-light">
+                    <div class="text-center d-lg-none w-100">
+                        <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
+                            <i class="icon-unfold mr-2"></i>
+                            Footer
+                        </button>
+                    </div>
+
+                    <div class="navbar-collapse collapse" id="navbar-footer">
+                        <span class="navbar-text">
+                            &copy; 2020. <a href="#">Bentley Internship Application</a> by <p>Catherine X., Segunfunmi O., Ellis Y., Lares X</p>
+                        </span>
+                    </div>
+                </div>
+                <!-- /footer -->
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+                        
+    </body>
+
+</html>

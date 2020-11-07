@@ -1,0 +1,129 @@
+@(appForm: Form[forms.AppForm.Data], page: String)(implicit request: RequestHeader, messages: Messages)
+@import b4.vertical.fieldConstructor
+@implicitFieldConstructor = @{ b4.vertical.fieldConstructor() }
+
+@main(page){
+	<a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+       <img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle mr-2" height="34" alt="">
+       <span>@messages("identity")</span>
+   </a>
+}{
+<div class="content">
+	@b4.vertical.formCSRF(routes.HomeController.formSubmit(), 'id -> "appForm", 'class -> "wizard-form steps-validation wizard clearfix") {implicit vfc =>
+		<div class="card" style="padding:30px;">
+      		<div class="card-header bg-white header-elements-inline">
+        			<h6 class="card-title">Application Form</h6>
+        			<div class="header-elements">
+         			<div class="list-icons">
+            				<a class="list-icons-item" data-action="collapse"></a>
+            				<a class="list-icons-item" data-action="reload"></a>
+            				<a class="list-icons-item" data-action="remove"></a>
+          			</div>
+        			</div>
+      		</div>
+      		<br>
+      		<h6>Personal data</h6>
+      		<br>
+      		<div class="row">
+      			<div class="col-md-6">
+        				<div class="form-group">
+                			@b4.text(appForm("name"), '_label -> "Application name", 'class -> "form-control required", 'placeholder -> "John Doe")
+        				</div>
+       			</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						@b4.text(appForm("email"), '_label -> "Email address", 'class -> "form-control required", 'placeholder -> "your@email.com")
+           			</div>
+       			</div>
+			</div>
+          	<div class="row">
+            		<div class="col-md-6">
+              		<div class="form-group">
+                			@b4.radio(appForm("international"), options = Seq("true" -> "Yes", "false" -> "No"), '_label -> "International Student?")              
+              		</div>
+            		</div>
+
+            		<div class="col-md-6">
+            			<div class="form-group">
+                			@b4.radio(appForm("cpt"), options = Seq("true" -> "Yes", "false" -> "No"), '_label -> "Applying for CPT?")
+                		</div>
+            		</div>
+			</div>
+			
+			<br>
+			<h6>Education</h6>
+        		<br>
+          	<div class="row">
+            		<div class="col-md-6">
+              		<div class="form-group">
+                			@b4.select(appForm("major"), options = Seq("0"-> "","1" -> "MBA", "2" -> "MSA", "3" -> "MSAA", "4" -> "MSBA", "5" -> "MSF", "6" -> "MSHFID", "7" -> "MST"), '_label -> "Major")
+              		</div>
+            		</div>
+
+            		<div class="col-md-6">
+              		<div class="form-group">
+                			@b4.select(appForm("concentration"), options = Seq("0_2"-> "", "1_2" -> "Accountancy", "2_2" -> "Business Analytics", "3_2" -> "Finance", "4_2" -> "Information Systems and Technology", "5_2" -> "Law and Taxation", "6_2" -> "Leadership", "7_2" -> "Marketing"), '_label -> "MBA Concentration(if applicable)")
+              		</div>
+            		</div>
+          	</div>
+
+          	<div class="row">
+            		<div class="col-md-6">
+              		<div class="form-group">
+                			@b4.text(appForm("gpa"), '_label -> "Overall GPA(out of 4.0)", 'class -> "form-control required", 'placeholder -> "4.0")
+              		</div>
+            		</div>
+
+            		<div class="col-md-6">
+              		<div class="row">
+                			<div class="col-md-6">
+                				@b4.date(appForm("school_start"), '_label -> "Program Start")
+                			</div>
+                			<div class="col-md-6">
+                				@b4.date(appForm("school_end"), '_label -> "Expect Graduation")
+                			</div>
+              		</div>
+            		</div>
+          	</div>
+			
+			<br>
+        		<h6>Internship Details</h6>
+        		<br>
+          	<div class="row">
+            		<div class="col-md-6">
+              		<div class="form-group">
+                			@helper.inputText(appForm("company"), '_label -> "Company", 'class -> "form-control required", 'placeholder -> "company name")
+              		</div>
+
+              		<div class="form-group">
+                			@helper.inputText(appForm("position"), '_label -> "Internship Position", 'class -> "form-control required", 'placeholder -> "Data Analytics Intern")
+              		</div>
+
+              		<div class="row">
+                			<div class="col-md-6">
+                  			@b4.date(appForm("start"), '_label -> "From") 
+                			</div>
+                			<div class="col-md-6">
+                  			@b4.date(appForm("end"), '_label -> "To")
+                			</div>
+              		</div>
+            		</div>
+
+            		<div class="col-md-6">
+              		<div class="form-group">
+              			@b4.radio(appForm("credit_type"), options = Seq("1-cred" -> "1 credit", "3-cred" -> "3 credits"), '_label -> "Which type of internship you apply for")
+              		</div>
+              		<div class="form-group">
+                			@b4.textarea(appForm("description"), '_label -> "How this intenship related to your program", 'class -> "form-control", 'placeholder -> "It is a ...", 'rows -> "10", 'cols -> "4")
+              		</div>
+
+            		</div>
+          	</div>
+        </div>
+         
+
+  }
+ 	</div>
+          <!-- /wizard with validation -->
+  <!-- /content area -->
+}
