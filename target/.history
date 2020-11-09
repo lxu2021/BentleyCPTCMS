@@ -1,0 +1,5 @@
+clean
+eclipse skip-parents=false
+compile
+run
+exit
