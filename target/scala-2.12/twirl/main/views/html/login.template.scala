@@ -360,7 +360,7 @@ Seq[Any](format.raw/*2.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2020-11-08T23:06:20.480
+                  DATE: 2020-11-12T11:26:29.745
                   SOURCE: C:/Users/zeeyi/Desktop/Fall-2020/Scala Codes/internship/app/views/login.scala.html
                   HASH: a620ee576999280cd774f1b18247d9bd5028cb4a
                   MATRIX: 729->1|838->17|865->18

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/zeeyi/Desktop/Fall-2020/Scala Codes/internship/conf/routes
-// @DATE:Sun Nov 08 23:06:20 EST 2020
+// @DATE:Thu Nov 12 11:26:29 EST 2020
 
 import play.api.routing.JavaScriptReverseRoute
 

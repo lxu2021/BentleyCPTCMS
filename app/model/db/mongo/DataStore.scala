@@ -19,10 +19,5 @@ trait DataStore extends AppConfiguration {
    val database: MongoDatabase = mongoClient.getDatabase(dbName)
    def close = mongoClient.close() //Do this when logging out
 
-//CleverCloud Method (Localhost, if DB User is empty)
-//  val uri: String = s"mongodb://$dbUser:$dbPasswd@$dbHost:$dbPort/$dbName"
-//  val mongoClient: MongoClient = if (getConfigString("datastore.user", "").isEmpty()) MongoClient() else MongoClient(uri)
-//  val database: MongoDatabase = mongoClient.getDatabase(config.getString("datastore.dbname"))
-//  def close = mongoClient.close() //Do this when logging out
 
 }
