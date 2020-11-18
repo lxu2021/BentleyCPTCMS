@@ -24,11 +24,9 @@ import model.db.mongo.DataStore
 //Play
 import play.api.Logger
 
-case class Application (id: String, AppID: String, CPT: String, Status: String, Timestamp: Date, OrgName: String, WorkAddress: String,
-    Position: String, Description: String, Hours: Int, Supervisor: String, Start: Date, End: Date, Semester: String, GPA: Int,
-    Program: String, MBAConc: String, GA: Boolean, FalconFT: Boolean, International: Boolean, IS_2terms: Boolean, priorFBL: Boolean,
-    ReqCourses: Boolean, ProgCourseReq: Boolean, AdvisorApproval: String, CoordinatorApproval: String, DeanApproval: String,
-    StudentID: String, CourseID: String, AdvisorEmail: String, CoordinatorEmail: String, DeanEmail: String)
+case class Application (id: String, name: String, email: String, international: Boolean,cpt: Boolean, major: String, concentration: Option[String], studentId:String,
+        gpa: String, school_start: Date, school_end: Date,company: String, position: String, start: Date, end: Date, credit_type: Boolean,
+        description: String)
     
 object Application extends DataStore with CloudinaryCDN {
   
@@ -38,51 +36,34 @@ object Application extends DataStore with CloudinaryCDN {
   val codecRegistry = fromRegistries(fromProviders(classOf[Application]), DEFAULT_CODEC_REGISTRY)
 
   //Using Case Class to get a collection - Test
-  val coll: MongoCollection[Application] = database.withCodecRegistry(codecRegistry).getCollection("Application")
+  val coll: MongoCollection[Application] = database.withCodecRegistry(codecRegistry).getCollection("ApplicationTest")
   
   //Using Document to get collection - Test
-  val listings: MongoCollection[Document] = database.getCollection("Application")
+  val listings: MongoCollection[Document] = database.getCollection("ApplicationTest")
 
   //Creating new application
-  def createApplication(id: String, AppID: String, CPT: String, Status: String, Timestamp: Date, OrgName: String, WorkAddress: String,
-    Position: String, Description: String, Hours: Int, Supervisor: String, Start: Date, End: Date, Semester: String, GPA: Int,
-    Program: String, MBAConc: String, GA: Boolean, FalconFT: Boolean, International: Boolean, IS_2terms: Boolean, priorFBL: Boolean,
-    ReqCourses: Boolean, ProgCourseReq: Boolean, AdvisorApproval: String, CoordinatorApproval: String, DeanApproval: String,
-    StudentID: String, CourseID: String, AdvisorEmail: String, CoordinatorEmail: String, DeanEmail: String) = {
+  def createApplication(name: String, email: String, international: Boolean,cpt: Boolean, major: String, concentration: Option[String], studentId:String,
+        gpa: Option[Double], school_start: Date, school_end: Date,company: String, position: String, start: Date, end: Date, credit_type: String,
+        description: String) = {
     
     val doc: Document = Document(
         "id" -> UUID.randomUUID().toString(),
-        "AppID" -> AppID,
-        "CPT" -> CPT,
-        "Status" -> Status,
-        "Timestamp" -> Timestamp,
-        "OrgName" -> OrgName,
-        "WorkAddress" -> WorkAddress,
-        "Position" -> Position,
-        "Description" -> Description,
-        "Hours" -> Hours,
-        "Supervisor" -> Supervisor,
-        "Start" -> Start,
-        "End" -> End,
-        "Semester" -> Semester,
-        "GPA" -> GPA,
-        "Program" -> Program,
-        "MBAConc" -> MBAConc,
-        "GA" -> GA,
-        "FalconFT" -> FalconFT,
-        "International" -> International,
-        "IS_2terms" -> IS_2terms,
-        "priorFBL" -> priorFBL,
-        "ReqCourses" -> ReqCourses,
-        "ProgCourseReq" -> ProgCourseReq,
-        "AdvisorApproval" -> AdvisorApproval,
-        "CoordinatorApproval" -> CoordinatorApproval,
-        "DeanApproval" -> DeanApproval,
-        "StudentID" -> StudentID,
-        "CourseID" -> CourseID,
-        "AdvisorEmail" -> AdvisorEmail,
-        "CoordinatorEmail" -> CoordinatorEmail,
-        "DeanEmail" -> DeanEmail)
+        "Name" -> name,
+        "Email" -> email,
+        "International" -> international,
+        "Cpt" -> cpt,
+        "Major" -> major,
+        "Concentration" -> concentration,
+        "StudentId" -> studentId,
+        "Gpa" -> gpa,  
+        "School_start" -> school_start,
+        "School_end" ->  school_end,
+        "Company" -> company,
+        "Position" -> position,
+        "Start" -> start,
+        "End" -> end,
+        "Credit_type" -> credit_type,
+        "Description" -> description)
         
     val observable: Observable[Completed] = listings.insertOne(doc)
 

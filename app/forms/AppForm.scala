@@ -8,13 +8,15 @@ object AppForm {
   
   val form = Form[Data](
       mapping(
+          "id"-> optional(text),
           "name" -> nonEmptyText,
           "email" -> email,
           "international" -> boolean,
           "cpt" -> boolean,
           "major" -> nonEmptyText,
           "concentration" -> optional(text),
-          "gpa" -> nonEmptyText,  
+          "studentId" -> nonEmptyText,
+          "gpa" -> optional(of(doubleFormat)),  
           "school_start" -> date,
           "school_end" -> date,
           "company" -> nonEmptyText,
@@ -23,19 +25,21 @@ object AppForm {
           "end" -> date,
 //          "offer_ids" -> optional(text),  
 //          "offer_format" -> optional(text),
-          "credit_type" -> boolean,
+          "credit_type" -> nonEmptyText,
           "description" -> nonEmptyText
           )(Data.apply)(Data.unapply)
         )
   
   case class Data(
+        id: Option[String],
         name: String,
         email: String,
         international: Boolean,
         cpt: Boolean,
         major: String,
         concentration: Option[String],
-        gpa: String,  
+        studentId:String,
+        gpa: Option[Double],  
         school_start: java.util.Date,
         school_end: java.util.Date,
         company: String,
@@ -44,7 +48,7 @@ object AppForm {
         end: java.util.Date,
 //        offer_ids: Option[String],  
 //        offer_format: Option[String],
-        credit_type: Boolean,
+        credit_type: String,
         description: String)
   
 }

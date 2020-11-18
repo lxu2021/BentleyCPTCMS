@@ -10,6 +10,7 @@ import play.api.data._
 import play.api.data.Forms._
 import play.api.i18n.{ Lang, Langs, I18nSupport, Messages, MessagesApi, MessagesProvider, MessagesImpl }
 import forms.AppForm
+import forms.LoginForm
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -30,7 +31,7 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
   }
 
    def login() = Action { implicit request: Request[AnyContent] =>
-     Ok(views.html.login("login"))
+     Ok(views.html.login("Login"))
    }
    
    def formSubmit() = Action{implicit request =>

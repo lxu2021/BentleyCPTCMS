@@ -1,0 +1,152 @@
+@(res: model.db.collections.Application, page: String)(implicit request: RequestHeader, messages: Messages)
+@import b4.vertical.fieldConstructor
+@implicitFieldConstructor = @{ b4.vertical.fieldConstructor() }
+
+@main(page){
+	<a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+       <img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle mr-2" height="34" alt="">
+       <span>@messages("identity")</span>
+   </a>
+}{
+<div class="content">
+	<div class = "wizard-form steps-validation wizard clearfix">
+		<div class="card" style="padding:30px;">
+      		<div class="card-header bg-white header-elements-inline">
+        			<h6 class="card-title">Submitted Application</h6>
+        			<div class="header-elements">
+         			<div class="list-icons">
+            				<a class="list-icons-item" data-action="collapse"></a>
+            				<a class="list-icons-item" data-action="reload"></a>
+            				<a class="list-icons-item" data-action="remove"></a>
+          			</div>
+        			</div>
+      		</div>
+      		<br>
+      		<h6>Personal data</h6>
+      		<br>
+      		<div class="row">
+      			<div class="col-md-6">
+        				<div class="form-group">
+        					<p>Applicant:</p>
+        					<p>@res.name</p>
+        				</div>
+       			</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<p>Email:</p>
+        					<p>@res.email</p>
+        				</div>
+       			</div>
+			</div>
+          	<div class="row">
+            		<div class="col-md-6">
+              		<div class="form-group">
+              			<p>International?</p>
+        					<p>@res.international</p>
+              		</div>
+            		</div>
+
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<p>Require CPT?</p>
+        					<p>@res.cpt</p>
+                		</div>
+            		</div>
+			</div>
+			
+			<br>
+			<h6>Education</h6>
+        		<br>
+          	<div class="row">
+            		<div class="col-md-6">
+              		<div class="form-group">
+              			<p>Major:</p>
+        					<p>@res.major</p>
+              		</div>
+            		</div>
+
+            		<div class="col-md-6">
+              		<div class="form-group">
+              			<p>Concentration if majoring in MBA:</p>
+        					<p>@res.concentration</p>
+              		</div>
+            		</div>
+          	</div>
+
+          	<div class="row">
+          		<div class="col-md-6">
+              		<div class="form-group">
+              			<p>Student ID:</p>
+        					<p>@res.studentId</p>
+              		</div>
+            		</div>
+            		<div class="col-md-6">
+              		<div class="form-group">
+              			<p>GPA:</p>
+        					<p>@res.gpa</p>
+              		</div>
+            		</div>
+            	</div>
+            		
+            	<div class="row">
+      			<div class="col-md-6">
+              		<div class="row">
+                			<div class="col-md-6">
+                				<p>School start:</p>
+        						<p>@res.school_start</p>
+                			</div>
+                			<div class="col-md-6">
+                				<p>Expect Graduation:</p>
+        						<p>@res.school_end</p>
+                			</div>
+              		</div>
+            		</div>
+			</div>
+
+			<br>
+        		<h6>Internship Details</h6>
+        		<br>
+          	<div class="row">
+            		<div class="col-md-6">
+              		<div class="form-group">
+              			<p>Company:</p>
+        					<p>@res.company</p>
+              		</div>
+
+              		<div class="form-group">
+              			<p>Position:</p>
+        					<p>@res.position</p>
+              		</div>
+
+              		<div class="row">
+                			<div class="col-md-6">
+	                			<p>Start from:</p>
+	        					<p>@res.start</p>
+                			</div>
+                			<div class="col-md-6">
+                				<p>To:</p>
+        						<p>@res.end</p>
+                			</div>
+              		</div>
+            		</div>
+
+            		<div class="col-md-6">
+              		<div class="form-group">
+              			<p>Internship course type:</p>
+        					<p>@res.credit_type</p>
+              		</div>
+              		<div class="form-group">
+              			<p>How this position related to your program:</p>
+        					<p>@res.description</p>g
+              		</div>
+
+            		</div>
+          	</div>
+        </div>
+         
+
+  	</div>
+ </div>
+          <!-- /wizard with validation -->
+  <!-- /content area -->
+}
