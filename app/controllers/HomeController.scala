@@ -34,6 +34,10 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
      Ok(views.html.login("Login"))
    }
    
+   def department() = Action { implicit request: Request[AnyContent] =>
+     Ok(views.html.department("Department"))
+   }
+   
    def formSubmit() = Action{implicit request =>
      AppForm.form.bindFromRequest.fold(
          formWithErrors => Ok(formWithErrors.toString),

@@ -6,6 +6,7 @@
 # An example controller showing basic website route navigation
 GET   /               controllers.HomeController.index
 GET   /login          controllers.HomeController.login
+GET   /department          controllers.HomeController.department
 GET   /:page          controllers.HomeController.loadPage(page)
 POST  /formSubmit     controllers.HomeController.formSubmit
 
