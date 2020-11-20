@@ -43,25 +43,14 @@ object Account extends DataStore with CloudinaryCDN {
   val listings: MongoCollection[Document] = database.getCollection("Account")
 
   // creating a new account
-  def createAccount(id: String, Username: String, Password: String, CreationDate: Date, 
-    LastLoggedIn: Option[Date], Name: String, Email: String, AccountType: String, StudentID: String,
-    GPA: Int, Program: String, International: Boolean, Department: Option[String]) = {
+  def createAccount(id: String, Username: String, Password: String) = {
 
     //Get image information if its available
      
     val doc: Document = Document(
       "id" -> UUID.randomUUID().toString(),
       "Username" -> Username,
-      "Password"-> Password, 
-      "CreationDate" -> new(Date), 
-      "Name" -> Name, 
-      "Email" -> Email, 
-      "AccountType" -> AccountType, 
-      "StudentID" -> StudentID,
-      "GPA" -> GPA, 
-      "Program" -> Program, 
-      "International" -> International, 
-      "Department" -> Department)
+      "Password"-> Password)
       
 
     val observable: Observable[Completed] = listings.insertOne(doc)

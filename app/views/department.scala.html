@@ -1,0 +1,312 @@
+@(topic: String)(implicit messages: Messages)
+
+@main(topic){
+
+}{
+  <div class="content-wrapper">
+
+			<!-- Page header -->
+			<div class="page-header page-header-light">
+				<div class="page-header-content header-elements-md-inline">
+					<div class="page-title d-flex">
+						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">User Pages</span> - User List</h4>
+						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+					</div>
+
+					<div class="header-elements d-none">
+						<div class="d-flex justify-content-center">
+							<a href="#" class="btn btn-link btn-float font-size-sm font-weight-semibold text-default">
+								<i class="icon-bars-alt text-pink-300"></i>
+								<span>Statistics</span>
+							</a>
+							<a href="#" class="btn btn-link btn-float font-size-sm font-weight-semibold text-default">
+								<i class="icon-calculator text-pink-300"></i>
+								<span>Invoices</span>
+							</a>
+							<a href="#" class="btn btn-link btn-float font-size-sm font-weight-semibold text-default">
+								<i class="icon-calendar5 text-pink-300"></i>
+								<span>Schedule</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+					<div class="d-flex">
+						<div class="breadcrumb">
+							<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+							<a href="user_pages_list.html" class="breadcrumb-item">User pages</a>
+							<span class="breadcrumb-item active">User list</span>
+						</div>
+
+						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+					</div>
+
+					<div class="header-elements d-none">
+						<div class="breadcrumb justify-content-center">
+							<a href="#" class="breadcrumb-elements-item">
+								<i class="icon-comment-discussion mr-2"></i>
+								Support
+							</a>
+
+							<div class="breadcrumb-elements-item dropdown p-0">
+								<a href="#" class="breadcrumb-elements-item dropdown-toggle" data-toggle="dropdown">
+									<i class="icon-gear mr-2"></i>
+									Settings
+								</a>
+
+								<div class="dropdown-menu dropdown-menu-right">
+									<a href="#" class="dropdown-item"><i class="icon-user-lock"></i> Account security</a>
+									<a href="#" class="dropdown-item"><i class="icon-statistics"></i> Analytics</a>
+									<a href="#" class="dropdown-item"><i class="icon-accessibility"></i> Accessibility</a>
+									<div class="dropdown-divider"></div>
+									<a href="#" class="dropdown-item"><i class="icon-gear"></i> All settings</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /page header -->
+
+
+			<!-- Content area -->
+			<div class="content">
+
+
+				<!-- Linked lists -->
+				<div class="row">
+
+					<div class="col-md-12">
+
+						<!-- List with badges -->
+						<div class="card">
+							<div class="card-header header-elements-inline">
+								<h5 class="card-title">Departments</h5>
+								<div class="header-elements">
+									<div class="list-icons">
+				                		<a class="list-icons-item" data-action="collapse"></a>
+				                		<a class="list-icons-item" data-action="reload"></a>
+				                		<a class="list-icons-item" data-action="remove"></a>
+				                	</div>
+			                	</div>
+							</div>
+
+							<ul class="media-list media-list-linked">
+								<li class="media bg-light font-weight-semibold py-2">Academic Advisor - <span class="text-muted"> Jennison 336 </span></li>
+
+								<li>
+									<a href="#" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">Sara Simeone</div>
+											<span class="text-muted">Associate Director</span> <br>
+											<span class="text-muted">ssimeone'bentley.edu</span>
+										</div>
+										<!-- <div class="align-self-center ml-3">
+											<span class="badge badge-primary">Jennison 336</span> <br>
+											<span class="badge badge-primary">781-891-2348</span>
+										</div> -->
+									</a>
+								</li>
+
+								<li>
+									<a href="#" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">Nicole Black</div>
+											<span class="text-muted">Associate Director</span> <br>
+											<span class="text-muted">nblack'bentley.edu</span>
+										</div>
+										
+										<!-- <div class="align-self-center ml-3">
+											<span class="badge badge-danger">HFID</span>
+										</div> -->
+									</a>
+                                </li>
+
+                                <li>
+									<a href="#" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">Iva Shosho</div>
+											<span class="text-muted">Senior Academic Advisor</span> <br>
+											<span class="text-muted">ishosho'bentley.edu</span>
+										</div>
+										
+									</a>
+								</li>
+
+								<li>
+									<a href="#" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">A.J Darcy</div>
+											<span class="text-muted">Associate Director, Grad Programs & Engagement</span> <br>
+											<span class="text-muted">adarcey'bentley.edu</span>
+										</div>
+										
+									</a>
+								</li>
+
+								<li>
+									<a href="#" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">Jaime Smith</div>
+											<span class="text-muted">Senior Program Assistant</span> <br>
+											<span class="text-muted">jsmith1'bentley.edu</span>
+										</div>
+									
+									</a>
+								</li>
+
+								<li class="media bg-light font-weight-semibold py-2">Internship Coordinators</li>
+
+								<li>
+									<a href="https://www.bentley.edu/directory?field_first_name_value=scott&field_last_name_value=boss&field_dept_name_value=All" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">Scott Boss</div>
+											<span class="text-muted">Associate Professor, Accountancy</span> <br>
+											<span class="text-muted">Adamian Academic Center 267</span> <br>
+											<span class="text-muted">781-891-2353</span> <br>
+											<span class="text-muted">sboss'bentley.edu</span> <br>
+										</div>
+										<!--  <div class="align-self-center ml-3">
+											<span class="badge badge-primary">CS</span>
+										</div> -->
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.bentley.edu/directory?field_first_name_value=lincoln&field_last_name_value=matra&field_dept_name_value=All" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">Lincoln Matra</div>
+											<span class="text-muted">Lecturer and System Administrator, Computer Information Systems</span> <br>
+											<span class="text-muted">Smith Technology Center 106</span> <br>
+											<span class="text-muted">781-216-7151</span> <br>
+											<span class="text-muted">lmatra'bentley.edu</span> <br>
+										</div>
+										
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.bentley.edu/directory?field_first_name_value=jeffrey&field_last_name_value=Livingston&field_dept_name_value=All" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+											<div class="media-body">
+											<div class="media-title font-weight-semibold">Jeffrey Livingston</div>
+											<span class="text-muted">Associate Professor and Gibbons Research Professor, Economics</span> <br>
+											<span class="text-muted">Adamian Academic Center 171</span> <br>
+											<span class="text-muted">781-891-2538</span> <br>
+											<span class="text-muted">jlivingston'bentley.edu</span> <br>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.bentley.edu/directory?field_first_name_value=Fred&field_last_name_value=Tuffile&field_dept_name_value=All" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">Fred Tuffile</div>
+											<span class="text-muted">Senior Lecturer, Management</span> <br>
+											<span class="text-muted">Adamian Academic Center 286</span> <br>
+											<span class="text-muted">781-891-2431</span> <br>
+											<span class="text-muted">ftuffile'bentley.edu</span> <br>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.bentley.edu/directory?field_first_name_value=jeffrey&field_last_name_value=moriarty&field_dept_name_value=All" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">Jeffrey Moriarty</div>
+											<span class="text-muted">Professor and Executive Director of the Hoffman Center for Business Ethics, Philosophy</span> <br>
+											<span class="text-muted">Adamian Academic Center 115</span> <br>
+											<span class="text-muted">781-891-2085</span> <br>
+											<span class="text-muted">jmoriarty'bentley.edu</span> <br>
+										</div>
+									</a>
+								</li>
+								
+								<li>
+									<a href="https://www.bentley.edu/directory?field_first_name_value=claude&field_last_name_value=Cicchetti&field_dept_name_value=All" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">Claude Cicchetti</div>
+											<span class="text-muted">Senior Lecturer and MSF Director, Finance</span> <br>
+											<span class="text-muted">Morison Hall 121</span> <br>
+											<span class="text-muted">781-891-2511</span> <br>
+											<span class="text-muted">ccicchetti'bentley.edu</span> <br>
+										</div>
+									</a>
+								</li>
+								
+								<li>
+									<a href="https://www.bentley.edu/directory?field_first_name_value=Timothy&field_last_name_value=Tierney&field_dept_name_value=All" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">Timothy F Tierney</div>
+											<span class="text-muted">Lecturer and Director, MST, Law and Taxation</span> <br>
+											<span class="text-muted">Morison Hall 272</span> <br>
+											<span class="text-muted">781-891-2540</span> <br>
+											<span class="text-muted">ttierney'bentley.edu</span> <br>
+										</div>
+									</a>
+								</li>
+								
+								<li>
+									<a href="https://www.bentley.edu/directory?field_first_name_value=bill&field_last_name_value=gribbons&field_dept_name_value=All" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">Bill Gribbons</div>
+											<span class="text-muted">Professor and MS HFID Director, Information Design and Corporate Communication</span> <br>
+											<span class="text-muted">Morison Hall 294</span> <br>
+											<span class="text-muted">781-891-2926</span> <br>
+											<span class="text-muted">wgribbons'bentley.edu</span> <br>
+										</div>
+									</a>
+								</li>
+								
+								<li>
+									<a href="https://www.bentley.edu/directory?field_first_name_value=James&field_last_name_value=Pouliopoulos&field_dept_name_value=All" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">James Pouliopoulos</div>
+											<span class="text-muted">Senior Lecturer, Marketing</span> <br>
+											<span class="text-muted">Morison Hall 296</span> <br>
+											<span class="text-muted">781-891-2006</span> <br>
+											<span class="text-muted">jpouliopoulos'bentley.edu</span> <br>
+										</div>
+									</a>
+								</li>
+								
+								<li>
+									<a href="https://www.bentley.edu/directory?field_first_name_value=Piaomu&field_last_name_value=liu&field_dept_name_value=All" class="media">
+										<div class="mr-3"><img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="40" height="40" alt=""></div>
+										<div class="media-body">
+											<div class="media-title font-weight-semibold">Piaomu Liu</div>
+											<span class="text-muted">Assistant Professor, Mathematical Sciences</span> <br>
+											<span class="text-muted">Morison Hall 393</span> <br>
+											<span class="text-muted">781-891-2831</span> <br>
+											<span class="text-muted">pliu'bentley.edu</span> <br>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<!-- /list with badges -->
+
+					</div>
+				</div>
+				<!-- /linked lists -->
+
+
+			</div>
+			<!-- /content area -->
+
+		</div>
+}

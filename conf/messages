@@ -6,3 +6,9 @@ percentage = 50%
 task_complete_count = 5
 application_date= Apr. 15th, 2020
 task_total_count = 10
+
+
+# for coordinator
+num_applications_left = 3
+num_applications_done = 2
+application_deadline = April 1, 2021
