@@ -24,9 +24,9 @@ import model.db.mongo.DataStore
 //Play
 import play.api.Logger
 
-case class Account(id: String, Username: String, Password: String, CreationDate: Date, 
-    LastLoggedIn: Option[Date], Name: String, Email: String, AccountType: String, StudentID: String,
-    GPA: Int, Program: String, International: Boolean, Department: Option[String])
+case class Account(Username: String, Password: String, CreationDate: String, 
+    LastLoggedIn: Option[String], Name: String, Email: String, AccountType: String, StudentID: String,
+    GPA: String, Program: String, International: String, Department: Option[String])
 
 object Account extends DataStore with CloudinaryCDN {
 
@@ -48,15 +48,15 @@ object Account extends DataStore with CloudinaryCDN {
    */
   def update(newAccount: Account) = {
 
-    coll.findOneAndReplace(equal("id", newAccount.id), newAccount).results()
+    coll.findOneAndReplace(equal("Email", newAccount.Email), newAccount).results()
 
   }
 
   /**
    * Delete a single document
    */
-  def deleteRecord(recId: String) = {
-    coll.deleteOne(equal("id", recId)).printHeadResult("Delete Result: ")
+  def deleteRecord(recEmail: String) = {
+    coll.deleteOne(equal("Email", recEmail)).printHeadResult("Delete Result: ")
   }
 
     

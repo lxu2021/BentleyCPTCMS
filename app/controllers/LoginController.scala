@@ -38,8 +38,8 @@ class LoginController @Inject() (cc: ControllerComponents) extends AbstractContr
             appLogger.debug(acc.toString)
             val accType = acc.AccountType
             accType match {
-              case "student"  => Redirect("/dashboard")
-              case "advisor"  => Redirect("/advisor")
+              case "Student"  => Redirect("/dashboard")
+              case "Advisor"  => Redirect("/advisor")
               case _          => Redirect("/coordinator")   
             }
            }

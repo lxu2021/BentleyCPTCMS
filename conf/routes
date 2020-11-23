@@ -8,7 +8,7 @@ GET   /                    controllers.HomeController.landing
 POST  /login               controllers.LoginController.loginAccount
 GET   /:page               controllers.HomeController.loadPage(page)
 POST  /applicationForm     controllers.FormController.formSubmit
-POST  /formSubmit          controllers.HomeController.formSubmit
+
 
 
 # Map static resources from the /public folder to the /assets URL path

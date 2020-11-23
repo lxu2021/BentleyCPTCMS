@@ -22,12 +22,12 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
   //Setup an application logger
   val appLogger: Logger = Logger("application")
 
-  def index() = Action { implicit request: Request[AnyContent] =>
+  def landing() = Action { implicit request: Request[AnyContent] =>
     val messages: Messages = request.messages
     val title: String = messages("home.title") 
     val identity:String = messages("identity")
     
-    Ok(views.html.index("Dashboard"))
+    Ok(views.html.landing("Homepage"))
   }
 
    def formSubmit() = Action{implicit request =>
