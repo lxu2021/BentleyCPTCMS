@@ -4,10 +4,10 @@
 # ~~~~
 
 # An example controller showing basic website route navigation
-GET   /               controllers.HomeController.index
-GET   /landing        controllers.HomeController.landing
+GET   /        controllers.HomeController.landing
 GET   /academicrequirement controllers.HomeController.academicrequirement
 GET   /login          controllers.HomeController.login
+GET   /dashboard               controllers.HomeController.index
 GET   /department          controllers.HomeController.department
 GET   /coordinator	  controllers.HomeController.coordinator
 GET   /:page          controllers.HomeController.loadPage(page)
