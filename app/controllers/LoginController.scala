@@ -9,9 +9,8 @@ import play.api.i18n._
 import play.api.data._
 import play.api.data.Forms._
 import play.api.i18n.{ Lang, Langs, I18nSupport, Messages, MessagesApi, MessagesProvider, MessagesImpl }
-import forms.AppForm
 import forms.LoginForm
-import model.db.collections.Application
+import model.db.collections.Account
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -23,11 +22,11 @@ class LoginController @Inject() (cc: ControllerComponents) extends AbstractContr
   //Setup an application logger
   val appLogger: Logger = Logger("application")
   
-  def read(id:String) = Action { implicit request: Request[AnyContent] =>
-
-    val res = Application.findRecord(id)
-    Ok(views.html.review(res, "Review Submitted Application"))
-  }
+//  def read(email:String) = Action { implicit request: Request[AnyContent] =>
+//
+//    val res = Application.findRecord(email)
+//    Ok(views.html.review(res, "Review Submitted Application"))
+//  }
 
   def loginAccount() = Action{implicit request =>
      LoginForm.form.bindFromRequest.fold(
@@ -35,11 +34,17 @@ class LoginController @Inject() (cc: ControllerComponents) extends AbstractContr
 //            BadRequest(views.html.form(formWithErrors)),
               
           form => {
-            
-//            Account.createAccount(
-//                form.username, form.password)
-            Redirect("/")    
-          })
+            val acc = Account.findRecord(form.email)
+            appLogger.debug(acc.toString)
+            val accType = acc.AccountType
+            accType match {
+              case "student"  => Redirect("/dashboard")
+              case "advisor"  => Redirect("/advisor")
+              case _          => Redirect("/coordinator")   
+            }
+           }
+          
+      )
    }
 
 }

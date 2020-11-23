@@ -1,4 +1,4 @@
-package app.controllers
+package controllers
 
 import javax.inject.Inject
 import scala.util.Try

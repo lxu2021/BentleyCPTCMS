@@ -9,14 +9,14 @@ object LoginForm {
   val form = Form[Data](
       mapping(
           "id"-> optional(text),
-          "username" -> nonEmptyText,
-          "password" -> email
+          "email" -> email,
+          "password" -> nonEmptyText
           )(Data.apply)(Data.unapply)
         )
   
   case class Data(
         id: Option[String],
-        username: String,
+        email: String,
         password: String
         )
   

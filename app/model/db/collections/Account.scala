@@ -42,27 +42,6 @@ object Account extends DataStore with CloudinaryCDN {
   //Using Document to get collection - Test
   val listings: MongoCollection[Document] = database.getCollection("Account")
 
-  // creating a new account
-  def createAccount(id: String, Username: String, Password: String) = {
-
-    //Get image information if its available
-     
-    val doc: Document = Document(
-      "id" -> UUID.randomUUID().toString(),
-      "Username" -> Username,
-      "Password"-> Password)
-      
-
-    val observable: Observable[Completed] = listings.insertOne(doc)
-
-    observable.subscribe(new Observer[Completed] {
-      override def onNext(result: Completed): Unit = appLogger.debug(s"Inserted: $result")
-      override def onError(e: Throwable): Unit = appLogger.error(s"Failed: $e")
-      override def onComplete(): Unit = appLogger.info("Completed")
-    })
-  }
-
-
   /**
    * Update a document, with this new document
    * Unique Id is used to find the existing document
@@ -82,15 +61,16 @@ object Account extends DataStore with CloudinaryCDN {
 
     
   /**
-   * Find a single record based on its unique Id
+   * Find a single record based on its unique email
    */
-  def findRecord(recId: String) = {
+  def findRecord(recEmail: String) = {
 
-    val rec = coll.find(equal("id", recId)).first().headResult()
+    val rec = coll.find(equal("Email", recEmail)).first().headResult()
     appLogger.info("Result  is: " + rec)
     rec
 
   }
+  
 
   /**
    * Retrieve all documents in the collection

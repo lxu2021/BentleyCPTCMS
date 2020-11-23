@@ -30,17 +30,7 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
     Ok(views.html.index("Dashboard"))
   }
 
-   def login() = Action { implicit request: Request[AnyContent] =>
-     Ok(views.html.login("Login"))
-   }
    
-   def department() = Action { implicit request: Request[AnyContent] =>
-     Ok(views.html.department("Department"))
-   }
-   
-   def coordinator() = Action { implicit request: Request[AnyContent] =>
-     Ok(views.html.coordinator("Coordinator"))
-   }
    
    def formSubmit() = Action{implicit request =>
      AppForm.form.bindFromRequest.fold(
@@ -64,8 +54,11 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
     appLogger.debug(s"Loading page: $page")
     
     page match {
-      case "form"    => Ok(views.html.form(AppForm.form, "Form"))
-      case _         => Ok(views.html.index("Dashboard"))
+      case "form"         => Ok(views.html.form(AppForm.form, "Form"))
+      case "department"   => Ok(views.html.department("Department"))
+      case "coordinator"  => Ok(views.html.coordinator("Coordinator"))
+      case "login"        => Ok(views.html.login(LoginForm.form,"Login"))
+      case _              => Ok(views.html.index("Dashboard"))
     }
   }
 

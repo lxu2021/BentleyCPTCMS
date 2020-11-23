@@ -9,7 +9,7 @@
    </a>
 }{
 <div class="content">
-	@b4.vertical.formCSRF(routes.HomeController.formSubmit(), 'id -> "appForm", 'class -> "wizard-form steps-validation wizard clearfix") {implicit vfc =>
+	@b4.vertical.formCSRF(routes.FormController.formSubmit(), 'id -> "appForm", 'class -> "wizard-form steps-validation wizard clearfix") {implicit vfc =>
 		<div class="card" style="padding:30px;">
       		<div class="card-header bg-white header-elements-inline">
         			<h6 class="card-title">Application Form</h6>
@@ -68,13 +68,20 @@
           	</div>
 
           	<div class="row">
+          		<div class="col-md-6">
+              		<div class="form-group">
+                			@b4.text(appForm("studentId"), '_label -> "StudentID", 'class -> "form-control required", 'placeholder -> "E04010000")
+              		</div>
+            		</div>
             		<div class="col-md-6">
               		<div class="form-group">
                 			@b4.text(appForm("gpa"), '_label -> "Overall GPA(out of 4.0)", 'class -> "form-control required", 'placeholder -> "4.0")
               		</div>
             		</div>
-
-            		<div class="col-md-6">
+            	</div>
+            		
+            	<div class="row">
+      			<div class="col-md-6">
               		<div class="row">
                 			<div class="col-md-6">
                 				@b4.date(appForm("school_start"), '_label -> "Program Start")
@@ -84,19 +91,19 @@
                 			</div>
               		</div>
             		</div>
-          	</div>
-			
+			</div>
+
 			<br>
         		<h6>Internship Details</h6>
         		<br>
           	<div class="row">
             		<div class="col-md-6">
               		<div class="form-group">
-                			@helper.inputText(appForm("company"), '_label -> "Company", 'class -> "form-control required", 'placeholder -> "company name")
+                			@b4.text(appForm("company"), '_label -> "Company", 'class -> "form-control required", 'placeholder -> "company name")
               		</div>
 
               		<div class="form-group">
-                			@helper.inputText(appForm("position"), '_label -> "Internship Position", 'class -> "form-control required", 'placeholder -> "Data Analytics Intern")
+                			@b4.text(appForm("position"), '_label -> "Internship Position", 'class -> "form-control required", 'placeholder -> "Data Analytics Intern")
               		</div>
 
               		<div class="row">
@@ -114,10 +121,13 @@
               			@b4.radio(appForm("credit_type"), options = Seq("1-cred" -> "1 credit", "3-cred" -> "3 credits"), '_label -> "Which type of internship you apply for")
               		</div>
               		<div class="form-group">
-                			@b4.textarea(appForm("description"), '_label -> "How this intenship related to your program", 'class -> "form-control", 'placeholder -> "It is a ...", 'rows -> "10", 'cols -> "4")
+                			@b4.textarea(appForm("description"), '_label -> "How this intenship related to your program", 'class -> "form-control", 'placeholder -> "It is a ...", 'rows -> "5", 'cols -> "4")
               		</div>
 
             		</div>
+          	</div>
+          	<div class = "row">
+          		<button type="submit" class="btn btn-primary legitRipple" role="button" action="submit"> Submit </button>
           	</div>
         </div>
          
