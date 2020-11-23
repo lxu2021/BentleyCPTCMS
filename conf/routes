@@ -5,6 +5,8 @@
 
 # An example controller showing basic website route navigation
 GET   /               controllers.HomeController.index
+GET   /landing        controllers.HomeController.landing
+GET   /academicrequirement controllers.HomeController.academicrequirement
 GET   /login          controllers.HomeController.login
 GET   /department          controllers.HomeController.department
 GET   /coordinator	  controllers.HomeController.coordinator

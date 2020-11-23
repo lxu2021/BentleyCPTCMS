@@ -30,6 +30,14 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
     Ok(views.html.index("Dashboard"))
   }
 
+  def landing() = Action {implicit request: Request[AnyContent] =>
+    Ok(views.html.landing("Landing"))
+  }
+  
+  def academicrequirement() = Action {implicit request: Request[AnyContent] =>
+    Ok(views.html.academicrequirement("Academic Requirement"))
+  }
+  
    def login() = Action { implicit request: Request[AnyContent] =>
      Ok(views.html.login("Login"))
    }
