@@ -6,6 +6,7 @@ percentage = 50%
 task_complete_count = 5
 application_date= Apr. 15th, 2020
 task_total_count = 10
+logout = Logout
 
 
 # for coordinator

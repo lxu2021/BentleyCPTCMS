@@ -11,6 +11,7 @@ import play.api.data.Forms._
 import play.api.i18n.{ Lang, Langs, I18nSupport, Messages, MessagesApi, MessagesProvider, MessagesImpl }
 import forms.AppForm
 import forms.LoginForm
+import model.db.collections.Account
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -50,11 +51,13 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
 
   def loadPage(page: String) = Action { implicit request: Request[AnyContent] =>
     appLogger.debug(s"Loading page: $page")
-    
+    val username = request.session.get("username")
+    val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
+   
     page match {
       case "form"                    => Ok(views.html.form(AppForm.form, "Form"))
       case "department"              => Ok(views.html.department("Department"))
-      case "coordinator"             => Ok(views.html.coordinator("Coordinator"))
+      case "coordinator"             => Ok(views.html.coordinator("Coordinator", acct))
       case "login"                   => Ok(views.html.login(LoginForm.form,"Login"))
       case "dashboard"               => Ok(views.html.index("Dashboard"))
       case "academicrequirement"     => Ok(views.html.academicrequirement("Academic Requirement"))

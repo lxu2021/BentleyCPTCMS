@@ -1,4 +1,4 @@
-@(appForm: Form[forms.AppForm.Data], page: String)(implicit request: RequestHeader, messages: Messages)
+@(appForm: Form[forms.AppForm.Data], page: String)(implicit request: RequestHeader, messages: Messages, flash: Flash)
 @import b4.vertical.fieldConstructor
 @implicitFieldConstructor = @{ b4.vertical.fieldConstructor() }
 

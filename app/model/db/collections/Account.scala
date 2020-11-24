@@ -81,4 +81,17 @@ object Account extends DataStore with CloudinaryCDN {
 
   }
 
+  
+  /**
+   * Validate a user that has logged in (added Prof. Matra)
+   */
+  def validateUser(username: String, password: String) : Boolean = {
+    //try to match a record in the DB based to what the user provided
+    val rec = coll.find(
+      Document("Email" -> username, "Password" -> password)  
+      ).first().headResult()
+ 
+      if(rec != null) true else false
+  }
+  
 }
