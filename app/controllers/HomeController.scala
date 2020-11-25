@@ -55,11 +55,11 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
     val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
    
     page match {
-      case "form"                    => Ok(views.html.form(AppForm.form, "Form"))
-      case "department"              => Ok(views.html.department("Department"))
+      case "form"                    => Ok(views.html.form(AppForm.form, "Form", acct))
+      case "department"              => Ok(views.html.department("Department", acct))
       case "coordinator"             => Ok(views.html.coordinator("Coordinator", acct))
       case "login"                   => Ok(views.html.login(LoginForm.form,"Login"))
-      case "dashboard"               => Ok(views.html.index("Dashboard"))
+      case "dashboard"               => Ok(views.html.index("Dashboard", acct))
       case "academicrequirement"     => Ok(views.html.academicrequirement("Academic Requirement"))
       case _                         => Ok(views.html.landing("Landing"))
     }

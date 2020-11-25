@@ -11,6 +11,7 @@ import play.api.data.Forms._
 import play.api.i18n.{ Lang, Langs, I18nSupport, Messages, MessagesApi, MessagesProvider, MessagesImpl }
 import forms.AppForm
 import model.db.collections.Application
+import model.db.collections.Account
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -25,7 +26,9 @@ class FormController @Inject() (cc: ControllerComponents) extends AbstractContro
   def read(id:String) = Action { implicit request: Request[AnyContent] =>
 
     val res = Application.findRecord(id)
-    Ok(views.html.review(res, "Review Submitted Application"))
+    val username = request.session.get("username")
+    val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
+    Ok(views.html.review(res, "Review Submitted Application",acct))
   }
 
   def formSubmit() = Action{implicit request =>

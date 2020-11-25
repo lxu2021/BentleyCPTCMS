@@ -1,10 +1,14 @@
-@(topic: String)(implicit messages: Messages, flash: Flash)
+@(topic: String, acct: Option[model.db.collections.Account])(implicit messages: Messages, flash: Flash)
 
 @main(topic){
-	<a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
-       <img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle mr-2" height="34" alt="">
-       <span>@messages("identity")</span>
+	<a href="#" class="navbar-nav-link d-flex align-items-center">
+       <img src="@routes.Assets.versioned("images/profile_icon.png")" class="rounded-circle mr-2" height="34" alt="">
+       <span>@acct.get.Email</span>
+   <a href="/logout">@messages("logout")</a>
    </a>
+}{
+ <p><span>@acct.get.Name</span>
+ <br>( @acct.get.AccountType )</p>
 }{
   <div class="content">
     <!-- Stats with progress -->

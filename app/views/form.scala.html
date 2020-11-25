@@ -1,12 +1,16 @@
-@(appForm: Form[forms.AppForm.Data], page: String)(implicit request: RequestHeader, messages: Messages, flash: Flash)
+@(appForm: Form[forms.AppForm.Data], page: String, acct: Option[model.db.collections.Account])(implicit request: RequestHeader, messages: Messages, flash: Flash)
 @import b4.vertical.fieldConstructor
 @implicitFieldConstructor = @{ b4.vertical.fieldConstructor() }
 
 @main(page){
-	<a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
-       <img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle mr-2" height="34" alt="">
-       <span>@messages("identity")</span>
+	<a href="#" class="navbar-nav-link d-flex align-items-center">
+       <img src="@routes.Assets.versioned("images/profile_icon.png")" class="rounded-circle mr-2" height="34" alt="">
+       <span>@acct.get.Email</span>
+   <a href="/logout">@messages("logout")</a>
    </a>
+}{
+ <p><span>@acct.get.Name</span>
+ <br>( @acct.get.AccountType )</p>
 }{
 <div class="content">
 	@b4.vertical.formCSRF(routes.FormController.formSubmit(), 'id -> "appForm", 'class -> "wizard-form steps-validation wizard clearfix") {implicit vfc =>
