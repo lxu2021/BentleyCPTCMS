@@ -1,20 +1,16 @@
 @(topic: String, acct: Option[model.db.collections.Account])(implicit messages: Messages, flash: Flash)
 
 @main(topic){
-	<a href="#" class="navbar-nav-link d-flex align-items-center">
-       <img src="@routes.Assets.versioned("images/profile_icon.png")" class="rounded-circle mr-2" height="34" alt="">
-       <span>@acct.get.Email</span>
-   <a href="/logout">@messages("logout")</a>
-   </a>
+	<div class="navbar-nav-link d-flex align-items-center">
+        <a><span style="margin:10px;">@acct.get.Email</span></a>
+   		<a href="/logout">@messages("logout")</a>
+   </div>
 
 }{
- <p><span>@acct.get.Name</span>
+ <p><span style = "font-size:24px;">@acct.get.Name</span>
  <br>( @acct.get.AccountType )</p>
 }{
   <div class="content-wrapper">
-
-
-
 
 			<!-- Content area -->
 			<div class="content">
@@ -28,13 +24,9 @@
 						<!-- List with badges -->
 						<div class="card">
 							<div class="card-header header-elements-inline">
-								<h5 class="card-title">Departments</h5>
+								<h5 class="card-title" style="margin:15px;">Departments</h5>
 								<div class="header-elements">
-									<div class="list-icons">
-				                		<a class="list-icons-item" data-action="collapse"></a>
-				                		<a class="list-icons-item" data-action="reload"></a>
-				                		<a class="list-icons-item" data-action="remove"></a>
-				                	</div>
+
 			                	</div>
 							</div>
 

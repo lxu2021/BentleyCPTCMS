@@ -3,26 +3,21 @@
 @implicitFieldConstructor = @{ b4.vertical.fieldConstructor() }
 
 @main(page){
-	<a href="#" class="navbar-nav-link d-flex align-items-center">
-       <img src="@routes.Assets.versioned("images/profile_icon.png")" class="rounded-circle mr-2" height="34" alt="">
-       <span>@acct.get.Email</span>
-   <a href="/logout">@messages("logout")</a>
-   </a>
+	<div class="navbar-nav-link d-flex align-items-center">
+        <a><span style="margin:10px;">@acct.get.Email</span></a>
+   		<a href="/logout">@messages("logout")</a>
+   </div>
 }{
- <p><span>@acct.get.Name</span>
+ <p><span style = "font-size:24px;">@acct.get.Name</span>
  <br>( @acct.get.AccountType )</p>
 }{
 <div class="content">
 	@b4.vertical.formCSRF(routes.FormController.formSubmit(), 'id -> "appForm", 'class -> "wizard-form steps-validation wizard clearfix") {implicit vfc =>
 		<div class="card" style="padding:30px;">
       		<div class="card-header bg-white header-elements-inline">
-        			<h6 class="card-title">Application Form</h6>
+        			<h5 class="card-title">Application Form</h5>
         			<div class="header-elements">
-         			<div class="list-icons">
-            				<a class="list-icons-item" data-action="collapse"></a>
-            				<a class="list-icons-item" data-action="reload"></a>
-            				<a class="list-icons-item" data-action="remove"></a>
-          			</div>
+
         			</div>
       		</div>
       		<br>
@@ -123,6 +118,9 @@
             		<div class="col-md-6">
               		<div class="form-group">
               			@b4.radio(appForm("credit_type"), options = Seq("1-cred" -> "1 credit", "3-cred" -> "3 credits"), '_label -> "Which type of internship you apply for")
+              		</div>
+              		<div class="form-group">
+              			@b4.select(appForm("course"), options = Seq("none"-> "","ac701" -> "AC701", "ac590" -> "AC590", "cs701" -> "CS701", "cs590" -> "CS590", "cs881" -> "CS881", "ec701" -> "EC701", "es701" -> "ES701", "eth701" -> "ETH701", "fi701" -> "FI701", "fi590" -> "FI590", "fp781" -> "FP781", "fp590" -> "FP590","ib701" -> "IB701", "ipm701" -> "IPM701", "ipm590" -> "IPM590", "hf790" -> "HF790", "hf590" -> "HF590", "mg701" -> "MG701", "mg590" -> "MG590", "mk701" -> "MK701", "mk590" -> "MK590", "st701" -> "ST701", "st590" -> "ST590", "tx781" -> "TX781", "tx590" -> "TX590"), '_label -> "Which internship course you apply for")
               		</div>
               		<div class="form-group">
                 			@b4.textarea(appForm("description"), '_label -> "How this intenship related to your program", 'class -> "form-control", 'placeholder -> "It is a ...", 'rows -> "5", 'cols -> "4")

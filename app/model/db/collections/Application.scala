@@ -25,7 +25,7 @@ import model.db.mongo.DataStore
 import play.api.Logger
 
 case class Application (id: String, name: String, email: String, international: Boolean,cpt: Boolean, major: String, concentration: Option[String], studentId:String,
-        gpa: String, school_start: Date, school_end: Date,company: String, position: String, start: Date, end: Date, credit_type: Boolean,
+        gpa: String, school_start: Date, school_end: Date,company: String, position: String, start: Date, end: Date, credit_type: String, course:String,
         description: String)
     
 object Application extends DataStore with CloudinaryCDN {
@@ -43,7 +43,7 @@ object Application extends DataStore with CloudinaryCDN {
 
   //Creating new application
   def createApplication(name: String, email: String, international: Boolean,cpt: Boolean, major: String, concentration: Option[String], studentId:String,
-        gpa: Option[Double], school_start: Date, school_end: Date,company: String, position: String, start: Date, end: Date, credit_type: String,
+        gpa: Option[Double], school_start: Date, school_end: Date,company: String, position: String, start: Date, end: Date, credit_type: String, course:String,
         description: String) = {
     
     val doc: Document = Document(
@@ -63,6 +63,7 @@ object Application extends DataStore with CloudinaryCDN {
         "Start" -> start,
         "End" -> end,
         "Credit_type" -> credit_type,
+        "Course" -> course,
         "Description" -> description)
         
     val observable: Observable[Completed] = listings.insertOne(doc)
