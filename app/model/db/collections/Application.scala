@@ -103,6 +103,11 @@ object Application extends DataStore  {
     rec
   }
   
+  // find records by email
+  def findEmail(CoordinatorEmail: String) = {
+    val recs = coll.find(equal("coordinator_email", CoordinatorEmail))
+    recs.results()
+  }
   
   // find all
   def findAll() = {

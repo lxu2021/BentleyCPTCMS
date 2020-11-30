@@ -35,14 +35,19 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
     val username = request.session.get("username")
     appLogger.debug(s"getting username: $username")
     val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
-    val res = Try(Some(Application.findRecord(username.get))).getOrElse(None)
-    appLogger.debug(s"getting record: $res")
     
     page match {
       case "form"                    => Ok(views.html.form(AppForm.form, "Form", acct))
       case "department"              => Ok(views.html.department("Department", acct))
-      case "coordinator"             => Ok(views.html.coordinator("Coordinator", acct))
-      case "review"                  => Ok(views.html.review(res, "Review", acct))
+      case "coordinator"             => {
+        val res = Application.findEmail(username.get)
+        appLogger.info("Result is: " + res)
+        Ok(views.html.coordinator("Coordinator", acct, res))
+      }
+      case "review"                  => {
+        val res = Try(Some(Application.findRecord(username.get))).getOrElse(None)
+        Ok(views.html.review(res, "Review", acct))
+      }
       case "login"                   => Ok(views.html.login(LoginForm.form,"Login"))
       case "dashboard"               => Ok(views.html.index("Dashboard", acct))
       case "academicrequirement"     => Ok(views.html.academicrequirement("Academic Requirement"))

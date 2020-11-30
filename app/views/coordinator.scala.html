@@ -1,4 +1,5 @@
-@(topic: String, acct: Option[model.db.collections.Account])(implicit messages: Messages, flash: Flash)
+@(topic: String, acct: Option[model.db.collections.Account], res: Seq[model.db.collections.Application])(implicit messages: Messages, flash: Flash)
+
 
 @main(topic){
 	<div class="navbar-nav-link d-flex align-items-center">
@@ -80,11 +81,11 @@
             </thead>
             
             <tbody>
-              
+            @res.map { item =>  
               <tr>
                 <td class="text-center">
                   <span class="badge badge-mark border-success mr-1"></span>
-                  <div class="font-size-sm text-muted line-height-1">pending</div>
+                  <div class="font-size-sm text-muted line-height-1">@item.company</div>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
@@ -94,118 +95,18 @@
                       </a>
                     </div>
                     <div>
-                      <a href="#" class="text-default font-weight-semibold letter-icon-title">Student 5</a>
+                      <a href="#" class="text-default font-weight-semibold letter-icon-title">@item.name</a>
                     </div>
                   </div>
                 </td>
                 <td>
                   <a href="#" class="text-default">
-                    <div class="font-weight-semibold">big company, exciting position</div>
+                    <div class="font-weight-semibold">@item.description</div>
                   </a>
                 </td>
                 <td></td>
               </tr>
-              
-              <tr>
-                <td class="text-center">
-                  <span class="badge badge-mark border-success mr-1"></span>
-                  <div class="font-size-sm text-muted line-height-1">pending</div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <div class="mr-3">
-                      <a href="#" class="btn bg-teal-400 rounded-round btn-icon btn-sm">
-                        <span class="letter-icon"></span>
-                      </a>
-                    </div>
-                    <div>
-                      <a href="#" class="text-default font-weight-semibold letter-icon-title">Student 4</a>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <a href="#" class="text-default">
-                    <div class="font-weight-semibold">sketchy company but good opportunity</div>
-                  </a>
-                </td>
-                <td></td>
-              </tr>
-              
-              <tr>
-                <td class="text-center">
-                  <span class="badge badge-mark border-success mr-1"></span>
-                  <div class="font-size-sm text-muted line-height-1">pending</div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <div class="mr-3">
-                      <a href="#" class="btn bg-teal-400 rounded-round btn-icon btn-sm">
-                        <span class="letter-icon"></span>
-                      </a>
-                    </div>
-                    <div>
-                      <a href="#" class="text-default font-weight-semibold letter-icon-title">Student 3</a>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <a href="#" class="text-default">
-                    <div class="font-weight-semibold">last-minute job</div>
-                  </a>
-                </td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td class="text-center">
-                  <i class="icon-checkmark3 text-success"></i>
-                  <div class="font-size-sm text-muted line-height-1">approved</div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <div class="mr-3">
-                      <a href="#" class="btn bg-success-400 rounded-round btn-icon btn-sm">
-                        <span class="letter-icon"></span>
-                      </a>
-                      
-                    </div>
-                    <div>
-                      <a href="#" class="text-default font-weight-semibold letter-icon-title">Student 2</a>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <a href="#" class="text-default">
-                    <div class="font-weight-semibold">solid internship in Boston</div>
-                  </a>
-                </td>
-                <td class="text-center"></td>
-              </tr>
-
-              <tr>
-                <td class="text-center">
-                  <i class="icon-cross2 text-danger-400"></i>
-                  <div class="text-muted font-size-sm">rejected</div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <div class="mr-3">
-                      <a href="#">
-                        <img src="@routes.Assets.versioned("images/placeholders/placeholder.jpg")" class="rounded-circle" width="32" height="32" alt="">
-                      </a>
-                    </div>
-                    <div>
-                      <a href="#" class="text-default font-weight-semibold">Student 1</a> 
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <a href="#" class="text-default">
-                    <div class="font-weight-semibold">bogus internship that got rejected</div>
-                  </a>
-                </td>
-                <td class="text-center"></td>
-              </tr>
+              }
             </tbody>
           </table>
         </div>
