@@ -21,17 +21,19 @@ import model.db.collections.Account
 class FormController @Inject() (cc: ControllerComponents) extends AbstractController(cc) with I18nSupport {
 
   //Setup an application logger
-  val appLogger: Logger = Logger("application")
+  val appLogger: Logger = Logger("form")
   
   def read(id:String) = Action { implicit request: Request[AnyContent] =>
 
-    val res = Application.findRecord(id)
+//    val res = Application.findRecord(id)
     val username = request.session.get("username")
     val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
+    val res = Try(Some(Application.findRecord(username.get))).getOrElse(None)
     Ok(views.html.review(res, "Review Submitted Application",acct))
   }
 
-  def formSubmit() = Action{implicit request =>
+    
+    def formSubmit() = Action{implicit request =>
      AppForm.form.bindFromRequest.fold(
          formWithErrors => Ok(formWithErrors.toString),
 //            BadRequest(views.html.form(formWithErrors)),
@@ -45,5 +47,6 @@ class FormController @Inject() (cc: ControllerComponents) extends AbstractContro
             Redirect("/")    
           })
    }
+
 
 }

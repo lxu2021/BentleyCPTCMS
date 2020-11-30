@@ -12,6 +12,8 @@
  <br>( @acct.get.AccountType )</p>
 }{
 <div class="content">
+	
+	@*in order to create and update the form: Need to create a if statement like the superhero-testing create view*@
 	@b4.vertical.formCSRF(routes.FormController.formSubmit(), 'id -> "appForm", 'class -> "wizard-form steps-validation wizard clearfix") {implicit vfc =>
 		<div class="card" style="padding:30px;">
       		<div class="card-header bg-white header-elements-inline">
@@ -31,7 +33,7 @@
        			</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						@b4.text(appForm("email"), '_label -> "Email address", 'class -> "form-control required", 'placeholder -> "your@email.com")
+						@b4.text(appForm("email"), '_label -> "Email address", 'class -> "form-control required", 'value -> {acct.get.Email})
            			</div>
        			</div>
 			</div>
@@ -55,13 +57,13 @@
           	<div class="row">
             		<div class="col-md-6">
               		<div class="form-group">
-                			@b4.select(appForm("major"), options = Seq("0"-> "","1" -> "MBA", "2" -> "MSA", "3" -> "MSAA", "4" -> "MSBA", "5" -> "MSF", "6" -> "MSHFID", "7" -> "MST"), '_label -> "Major")
+                			@b4.select(appForm("major"), options = Seq("n/a"-> "","MBA" -> "MBA", "MSA" -> "MSA", "MSAA" -> "MSAA", "MSBA" -> "MSBA", "MSF" -> "MSF", "MSHFID" -> "MSHFID", "MST" -> "MST"), '_label -> "Major")
               		</div>
             		</div>
 
             		<div class="col-md-6">
               		<div class="form-group">
-                			@b4.select(appForm("concentration"), options = Seq("0_2"-> "", "1_2" -> "Accountancy", "2_2" -> "Business Analytics", "3_2" -> "Finance", "4_2" -> "Information Systems and Technology", "5_2" -> "Law and Taxation", "6_2" -> "Leadership", "7_2" -> "Marketing"), '_label -> "MBA Concentration(if applicable)")
+                			@b4.select(appForm("concentration"), options = Seq("n/a"-> "", "Accountancy" -> "Accountancy", "Business Analytics" -> "Business Analytics", "Finance" -> "Finance", "Information Systems and Technology" -> "Information Systems and Technology", "Law and Taxation" -> "Law and Taxation", "Leadership" -> "Leadership", "Marketing" -> "Marketing"), '_label -> "MBA Concentration(if applicable)")
               		</div>
             		</div>
           	</div>
@@ -129,7 +131,7 @@
             		</div>
           	</div>
           	<div class = "row">
-          		<button type="submit" class="btn btn-primary legitRipple" role="button" action="submit"> Submit </button>
+          		<button type="submit" class="btn btn-primary legitRipple" role="button" action="submit"> @messages("submit") </button>
           	</div>
         </div>
          

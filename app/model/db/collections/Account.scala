@@ -44,7 +44,7 @@ object Account extends DataStore with CloudinaryCDN {
 
   /**
    * Update a document, with this new document
-   * Unique Id is used to find the existing document
+   * Unique Email is used to find the existing document
    */
   def update(newAccount: Account) = {
 

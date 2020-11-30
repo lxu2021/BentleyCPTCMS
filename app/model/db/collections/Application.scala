@@ -25,10 +25,10 @@ import model.db.mongo.DataStore
 import play.api.Logger
 
 case class Application (id: String, name: String, email: String, international: Boolean,cpt: Boolean, major: String, concentration: Option[String], studentId:String,
-        gpa: String, school_start: Date, school_end: Date,company: String, position: String, start: Date, end: Date, credit_type: String, course:String,
+        gpa: Option[Double], school_start: Date, school_end: Date,company: String, position: String, start: Date, end: Date, credit_type: String, course:String,
         description: String)
     
-object Application extends DataStore with CloudinaryCDN {
+object Application extends DataStore  {
   
   val appLogger: Logger = Logger("application")
 
@@ -48,23 +48,24 @@ object Application extends DataStore with CloudinaryCDN {
     
     val doc: Document = Document(
         "id" -> UUID.randomUUID().toString(),
-        "Name" -> name,
-        "Email" -> email,
-        "International" -> international,
-        "Cpt" -> cpt,
-        "Major" -> major,
-        "Concentration" -> concentration,
-        "StudentId" -> studentId,
-        "Gpa" -> gpa,  
-        "School_start" -> school_start,
-        "School_end" ->  school_end,
-        "Company" -> company,
-        "Position" -> position,
-        "Start" -> start,
-        "End" -> end,
-        "Credit_type" -> credit_type,
-        "Course" -> course,
-        "Description" -> description)
+        "name" -> name,
+        "email" -> email,
+        "international" -> international,
+        "cpt" -> cpt,
+        "major" -> major,
+        "concentration" -> concentration,
+        "studentId" -> studentId,
+        "gpa" -> gpa,  
+        "school_start" -> school_start,
+        "school_end" ->  school_end,
+        "company" -> company,
+        "position" -> position,
+        "start" -> start,
+        "end" -> end,
+        "credit_type" -> credit_type,
+        "course" -> course,
+        "description" -> description,
+        "created" -> new Date())
         
     val observable: Observable[Completed] = listings.insertOne(doc)
 
@@ -86,15 +87,28 @@ object Application extends DataStore with CloudinaryCDN {
   }
   
   // find record
-  def findRecord(recId: String) = {
-    val rec = coll.find(equal("id", recId)).first().headResult()
-    appLogger.info("Result is: " + rec)
+//  def findRecord(recId: String) = {
+//    val rec = coll.find(equal("id", recId)).first().headResult()
+//    appLogger.info("Result is: " + rec)
+//    rec
+//  }
+  
+    /**
+   * Find a single record based on its unique email
+   */
+  def findRecord(recEmail: String) = {
+
+    val rec = coll.find(equal("email", recEmail)).first().headResult()
+    appLogger.info("Result  is: " + rec)
     rec
   }
+  
   
   // find all
   def findAll() = {
     coll.find().results()
   }
+
   
+
 }
