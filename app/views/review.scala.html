@@ -35,13 +35,13 @@
           	<div class="row">
             		<div class="col-md-6">
               		<div class="form-group">
-              			<p><b>International Student?:</b> @if(res.get.international == "true"){Yes}else{No} </p>
+              			<p><b>International Student?:</b> @if(res.get.international.toString == "true"){Yes}else{No} </p>
               		</div>
             		</div>
 
             		<div class="col-md-6">
             			<div class="form-group">
-            				<p><b>Require CPT? (international student only):</b> @if(res.get.international == "true"){Yes}else{No}</p>
+            				<p><b>Require CPT? (international student only):</b> @if(res.get.international.toString == "true"){Yes}else{No}</p>
                 		</div>
             		</div>
 			</div>

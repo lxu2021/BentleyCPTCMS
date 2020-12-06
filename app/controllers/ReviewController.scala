@@ -31,21 +31,5 @@ class ReviewController @Inject() (cc: ControllerComponents) extends AbstractCont
     Ok(views.html.review(res, "Review Submitted Application",acct))
   }
 
-    
-    def formSubmit() = Action{implicit request =>
-     AppForm.form.bindFromRequest.fold(
-         formWithErrors => Ok(formWithErrors.toString),
-//            BadRequest(views.html.form(formWithErrors)),
-              
-          form => {
-            
-            Application.createApplication(
-                form.name, form.email, form.international, form.cpt, form.major, form.concentration, form.studentId,
-                form.gpa, form.school_start,form.school_end, form.company, form.position, form.start, form.end, 
-                form.credit_type, form.course, form.description)
-            Redirect("/")    
-          })
-   }
-
 
 }
