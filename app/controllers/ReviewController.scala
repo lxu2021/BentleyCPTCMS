@@ -18,11 +18,18 @@ import model.db.collections.Account
  * application's home page.
  */
 //@Singleton
-class FormController @Inject() (cc: ControllerComponents) extends AbstractController(cc) with I18nSupport {
+class ReviewController @Inject() (cc: ControllerComponents) extends AbstractController(cc) with I18nSupport {
 
   //Setup an application logger
   val appLogger: Logger = Logger("form")
   
+  def review(id:String) = Action { implicit request: Request[AnyContent] =>
+
+    val username = request.session.get("username")
+    val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
+    val res = Try(Some(Application.findIdRecord(id))).getOrElse(None)
+    Ok(views.html.review(res, "Review Submitted Application",acct))
+  }
 
     
     def formSubmit() = Action{implicit request =>

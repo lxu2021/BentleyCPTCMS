@@ -157,27 +157,28 @@
                     <!-- /user menu -->
                     
                     <!-- Main navigation -->
-                    
-                    <div class="card card-sidebar-mobile">
-                        <ul class="nav nav-sidebar" data-nav-type="accordion">
-                            <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Navigation</div> <i class="icon-menu" title="Navigation"></i></li>
-                            
-                            <li class="nav-item">
-                                <a href="dashboard" class="nav-link @if(title == "Dashboard") { active} ">
-                                    <i class="icon-home4"></i>
-                                    <span> Dashboard </span></a>
-                            </li>
-
-                            <li class="nav-item  ">
-                                <a href="/department" class="nav-link @if(title == "Department") {active}"><i class="icon-page-break2"></i> 
-                                	<span>Department</span></a>
-                            </li>
-                            <li class="nav-item ">
-                                <a href="/form" class="nav-link @if(title == "Form") {active}"><i class="icon-indent-decrease2"></i> 
-                                	<span>Form</span></a>
-                            </li>                               
-                        </ul>
-                    </div>
+                    @if(title == "Dashboard" || title == "Department" || title == "Form"){
+	                    <div class="card card-sidebar-mobile">
+	                        <ul class="nav nav-sidebar" data-nav-type="accordion">
+	                            <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Navigation</div> <i class="icon-menu" title="Navigation"></i></li>
+	                            
+	                            <li class="nav-item">
+	                                <a href="dashboard" class="nav-link @if(title == "Dashboard") { active} ">
+	                                    <i class="icon-home4"></i>
+	                                    <span> Dashboard </span></a>
+	                            </li>
+	
+	                            <li class="nav-item  ">
+	                                <a href="/department" class="nav-link @if(title == "Department") {active}"><i class="icon-page-break2"></i> 
+	                                	<span>Department</span></a>
+	                            </li>
+	                            <li class="nav-item ">
+	                                <a href="/form" class="nav-link @if(title == "Form") {active}"><i class="icon-indent-decrease2"></i> 
+	                                	<span>Form</span></a>
+	                            </li>                               
+	                        </ul>
+	                    </div>
+                    }
                     
                     <!-- /main navigation -->
                 </div>

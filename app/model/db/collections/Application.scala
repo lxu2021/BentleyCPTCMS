@@ -86,12 +86,12 @@ object Application extends DataStore  {
     coll.deleteOne(equal("id", recId)).printHeadResult("Delete Result: ")
   }
   
-  // find record
-//  def findRecord(recId: String) = {
-//    val rec = coll.find(equal("id", recId)).first().headResult()
-//    appLogger.info("Result is: " + rec)
-//    rec
-//  }
+   //find record using id
+  def findIdRecord(recId: String) = {
+    val rec = coll.find(equal("id", recId)).first().headResult()
+    appLogger.info("Result is: " + rec)
+    rec
+  }
   
     /**
    * Find a single record based on its unique email

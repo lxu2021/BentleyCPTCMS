@@ -9,7 +9,8 @@ GET   /logout			   controllers.LoginController.logout
 POST  /login               controllers.LoginController.loginAccount
 GET   /:page               controllers.HomeController.loadPage(page)
 POST  /applicationForm     controllers.FormController.formSubmit
-
+GET   /review/:id          controllers.ReviewController.review(id)
+#POST  /review/:id          controllers.ReviewController.processReview(id)
 
 
 # Map static resources from the /public folder to the /assets URL path
