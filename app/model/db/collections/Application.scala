@@ -26,7 +26,7 @@ import play.api.Logger
 
 case class Application (id: String, name: String, email: String, international: Boolean,cpt: Boolean, major: String, concentration: Option[String], studentId:String,
         gpa: Option[Double], school_start: Date, school_end: Date,company: String, position: String, start: Date, end: Date, credit_type: String, course:String,
-        description: String)
+        description: String, coordinator_status: String, coordinator_email: Option[String], advisor_status: String, advisor_email: Option[String])
     
 object Application extends DataStore  {
   
@@ -44,7 +44,7 @@ object Application extends DataStore  {
   //Creating new application
   def createApplication(name: String, email: String, international: Boolean,cpt: Boolean, major: String, concentration: Option[String], studentId:String,
         gpa: Option[Double], school_start: Date, school_end: Date,company: String, position: String, start: Date, end: Date, credit_type: String, course:String,
-        description: String) = {
+        description: String, coordinator_status: String = "pending", coordinator_email: Option[String], advisor_status: String = "pending", advisor_email: Option[String]) = {
     
     val doc: Document = Document(
         "id" -> UUID.randomUUID().toString(),
@@ -65,7 +65,11 @@ object Application extends DataStore  {
         "credit_type" -> credit_type,
         "course" -> course,
         "description" -> description,
-        "created" -> new Date())
+        "created" -> new Date(),
+        "coordinator_status" -> coordinator_status,
+        "coordinator_email" -> coordinator_email,
+        "advisor_status" -> advisor_status,
+        "advisor_email" -> advisor_email)
         
     val observable: Observable[Completed] = listings.insertOne(doc)
 

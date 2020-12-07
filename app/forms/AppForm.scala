@@ -27,7 +27,11 @@ object AppForm {
 //          "offer_format" -> optional(text),
           "credit_type" -> nonEmptyText,
           "course" ->nonEmptyText,
-          "description" -> nonEmptyText
+          "description" -> nonEmptyText,
+          "coordinator_status" -> nonEmptyText,
+          "coordinator_email" -> optional(text),
+          "advisor_status" -> nonEmptyText,
+          "advisor_email" -> optional(text)
           )(Data.apply)(Data.unapply)
         )
   
@@ -51,6 +55,10 @@ object AppForm {
 //        offer_format: Option[String],
         credit_type: String,
         course: String,
-        description: String)
+        description: String,
+        coordinator_status: String,
+        coordinator_email: Option[String],
+        advisor_status: String,
+        advisor_email: Option[String])
   
 }
