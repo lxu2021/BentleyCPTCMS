@@ -120,8 +120,7 @@ object Application extends DataStore  {
   }
   
   //Update advisor comments and status 
-  def advisorUpdate( applicationID:String, advisor_status:String) = {
-//    coll.findOneAndReplace(equal("id", newApplication.id), newApplication).results()
+  def advisorUpdate(applicationID:String, advisor_status:String) = {
     appLogger.info("Updating advisor result" )
     appLogger.info("Status " + advisor_status  )
     appLogger.info("APP ID " + applicationID  )     
@@ -129,6 +128,20 @@ object Application extends DataStore  {
             val newApp = Application(applicationID,oldApp.name, oldApp.email, oldApp.international, oldApp.cpt, oldApp.major, oldApp.concentration, oldApp.studentId,
                                       oldApp.gpa, oldApp.school_start, oldApp.school_end, oldApp.company, oldApp.position, oldApp.start, oldApp.end, 
                                       oldApp.credit_type, oldApp.course, oldApp.description, oldApp.coordinator_status, oldApp.coordinator_email, advisor_status, oldApp.advisor_email)
+            
+            Application.update(newApp)
+    
+  }
+  
+  //Update coordinator comments and status 
+  def coordinatorUpdate(applicationID:String, coordinator_status:String) = {
+    appLogger.info("Updating advisor result" )
+    appLogger.info("Status " + coordinator_status  )
+    appLogger.info("APP ID " + applicationID  )     
+     val oldApp = Application.findIdRecord(applicationID)
+            val newApp = Application(applicationID,oldApp.name, oldApp.email, oldApp.international, oldApp.cpt, oldApp.major, oldApp.concentration, oldApp.studentId,
+                                      oldApp.gpa, oldApp.school_start, oldApp.school_end, oldApp.company, oldApp.position, oldApp.start, oldApp.end, 
+                                      oldApp.credit_type, oldApp.course, oldApp.description, coordinator_status, oldApp.coordinator_email, oldApp.advisor_status, oldApp.advisor_email)
             
             Application.update(newApp)
     

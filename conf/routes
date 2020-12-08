@@ -13,6 +13,8 @@ GET   /review/:id          controllers.ReviewController.review(id)
 #POST  /review/:id          controllers.ReviewController.processReview(id)
 GET   /advisor/update/:id          controllers.AdvisorReviewController.update(id)
 POST  /advisorUpdate     controllers.AdvisorReviewController.formSubmit
+GET   /coordinator/update/:id	controllers.CoordinatorReviewController.update(id)
+POST  /coordinatorUpdate		controllers.CoordinatorReviewController.formSubmit
 
 
 # Map static resources from the /public folder to the /assets URL path
