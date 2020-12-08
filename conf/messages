@@ -9,3 +9,9 @@ task_total_count = 10
 logout = Logout
 submit = SUBMIT
 update = UPDATE
+
+
+# for coordinator
+num_applications_left = 3
+num_applications_done = 2
+application_deadline = April 1, 2021

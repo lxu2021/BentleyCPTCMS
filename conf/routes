@@ -11,6 +11,8 @@ GET   /:page               controllers.HomeController.loadPage(page)
 POST  /applicationForm     controllers.FormController.formSubmit
 GET   /review/:id          controllers.ReviewController.review(id)
 #POST  /review/:id          controllers.ReviewController.processReview(id)
+GET   /advisor/update/:id          controllers.AdvisorReviewController.update(id)
+POST  /advisorUpdate     controllers.AdvisorReviewController.formSubmit
 
 
 # Map static resources from the /public folder to the /assets URL path

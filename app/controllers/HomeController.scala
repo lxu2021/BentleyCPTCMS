@@ -44,6 +44,11 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
         appLogger.info("Result is: " + res)
         Ok(views.html.coordinator("Coordinator", acct, res))
       }
+      case "advisor"             => {
+        val res = Application.findAdvisorEmail(username.get)
+        appLogger.info("Result is: " + res)
+        Ok(views.html.advisor("Advisor", acct, res))
+      }
 //      case "review"                  => {
 //        val res = Try(Some(Application.findRecord(username.get))).getOrElse(None)
 //        Ok(views.html.review(res, "Review", acct))
