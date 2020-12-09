@@ -28,25 +28,25 @@
       		<div class="row">
       			<div class="col-md-6">
         				<div class="form-group">
-                			@b4.text(appForm("name"), '_label -> "Application name", 'class -> "form-control required", 'placeholder -> "John Doe")
+                			@b4.text(appForm("name"), '_label -> "Student Name*", 'class -> "form-control required", 'placeholder -> "John Doe")
         				</div>
        			</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						@b4.text(appForm("email"), '_label -> "Email address", 'class -> "form-control required", 'value -> {acct.get.Email})
+						@b4.text(appForm("email"), '_label -> "Email Address*", 'class -> "form-control required", 'value -> {acct.get.Email})
            			</div>
        			</div>
 			</div>
           	<div class="row">
             		<div class="col-md-6">
               		<div class="form-group">
-                			@b4.radio(appForm("international"), options = Seq("true" -> "Yes", "false" -> "No"), '_label -> "International Student?")              
+                			@b4.radio(appForm("international"), options = Seq("true" -> "Yes", "false" -> "No"),'_label -> "International Student?*")              
               		</div>
             		</div>
 
             		<div class="col-md-6">
             			<div class="form-group">
-                			@b4.radio(appForm("cpt"), options = Seq("true" -> "Yes", "false" -> "No"), '_label -> "Applying for CPT?")
+                			@b4.radio(appForm("cpt"), options = Seq("true" -> "Yes", "false" -> "No"),'_label -> "Applying for CPT?*")
                 		</div>
             		</div>
 			</div>
@@ -57,13 +57,13 @@
           	<div class="row">
             		<div class="col-md-6">
               		<div class="form-group">
-                			@b4.select(appForm("major"), options = Seq("n/a"-> "","MBA" -> "MBA", "MSA" -> "MSA", "MSAA" -> "MSAA", "MSBA" -> "MSBA", "MSF" -> "MSF", "MSHFID" -> "MSHFID", "MST" -> "MST"), '_label -> "Major")
+                			@b4.select(appForm("major"), options = Seq("n/a"-> "","MBA" -> "MBA", "MSA" -> "MSA", "MSAA" -> "MSAA", "MSBA" -> "MSBA", "MSF" -> "MSF", "MSHFID" -> "MSHFID", "MST" -> "MST"),'class -> "form-control required", '_label -> "Major*")
               		</div>
             		</div>
 
             		<div class="col-md-6">
               		<div class="form-group">
-                			@b4.select(appForm("concentration"), options = Seq("n/a"-> "", "Accountancy" -> "Accountancy", "Business Analytics" -> "Business Analytics", "Finance" -> "Finance", "Information Systems and Technology" -> "Information Systems and Technology", "Law and Taxation" -> "Law and Taxation", "Leadership" -> "Leadership", "Marketing" -> "Marketing"), '_label -> "MBA Concentration(if applicable)")
+                			@b4.select(appForm("concentration"), options = Seq("n/a"-> "", "N/A" -> "N/A", "Accountancy" -> "Accountancy", "Business Analytics" -> "Business Analytics", "Finance" -> "Finance", "Information Systems and Technology" -> "Information Systems and Technology", "Law and Taxation" -> "Law and Taxation", "Leadership" -> "Leadership", "Marketing" -> "Marketing"),'class -> "form-control required", '_label -> "MBA Concentration(if applicable)")
               		</div>
             		</div>
           	</div>
@@ -71,12 +71,12 @@
           	<div class="row">
           		<div class="col-md-6">
               		<div class="form-group">
-                			@b4.text(appForm("studentId"), '_label -> "StudentID", 'class -> "form-control required", 'placeholder -> "E04010000")
+                			@b4.text(appForm("studentId"), '_label -> "StudentID*", 'class -> "form-control required", 'placeholder -> "E04010000")
               		</div>
             		</div>
             		<div class="col-md-6">
               		<div class="form-group">
-                			@b4.text(appForm("gpa"), '_label -> "Overall GPA(out of 4.0)", 'class -> "form-control required", 'placeholder -> "4.0")
+                			@b4.text(appForm("gpa"), '_label -> "Overall GPA(out of 4.0)*", 'class -> "form-control required", 'placeholder -> "4.0")
               		</div>
             		</div>
             	</div>
@@ -85,10 +85,10 @@
       			<div class="col-md-6">
               		<div class="row">
                 			<div class="col-md-6">
-                				@b4.date(appForm("school_start"), '_label -> "Program Start")
+                				@b4.date(appForm("school_start"), 'class -> "form-control required",'_label -> "Program Start Date*")
                 			</div>
                 			<div class="col-md-6">
-                				@b4.date(appForm("school_end"), '_label -> "Expect Graduation")
+                				@b4.date(appForm("school_end"),'class -> "form-control required", '_label -> "Expected Graduation Date*")
                 			</div>
               		</div>
             		</div>
@@ -100,35 +100,35 @@
           	<div class="row">
             		<div class="col-md-6">
             			<div class="form-group">
-              			@b4.radio(appForm("credit_type"), options = Seq("1-cred" -> "1 credit", "3-cred" -> "3 credits"), '_label -> "Which type of internship you apply for")
+              			@b4.radio(appForm("credit_type"), options = Seq("1-cred" -> "1 credit", "3-cred" -> "3 credits"), '_label -> "Which type of internship you apply for?*")
               		</div>
               		<div class="form-group">
-                			@b4.text(appForm("company"), '_label -> "Company", 'class -> "form-control required", 'placeholder -> "company name")
+                			@b4.text(appForm("company"), '_label -> "Company*", 'class -> "form-control required", 'placeholder -> "company name")
               		</div>
 
               		<div class="form-group">
-                			@b4.text(appForm("position"), '_label -> "Internship Position", 'class -> "form-control required", 'placeholder -> "Data Analytics Intern")
+                			@b4.text(appForm("position"), '_label -> "Internship Position*", 'class -> "form-control required", 'placeholder -> "Data Analytics Intern")
               		</div>
 
               		<div class="row">
                 			<div class="col-md-6">
-                  			@b4.date(appForm("start"), '_label -> "From") 
+                  			@b4.date(appForm("start"), 'class -> "form-control required",'_label -> "From*") 
                 			</div>
                 			<div class="col-md-6">
-                  			@b4.date(appForm("end"), '_label -> "To")
+                  			@b4.date(appForm("end"), 'class -> "form-control required",'_label -> "To*")
                 			</div>
               		</div>
             		</div>
 
             		<div class="col-md-6">            		
               		<div class="form-group">
-              			@b4.select(appForm("course"), options = Seq("none"-> "","ac701" -> "AC701", "ac590" -> "AC590", "cs701" -> "CS701", "cs590" -> "CS590", "cs881" -> "CS881", "ec701" -> "EC701", "es701" -> "ES701", "eth701" -> "ETH701", "fi701" -> "FI701", "fi590" -> "FI590", "fp781" -> "FP781", "fp590" -> "FP590","ib701" -> "IB701", "ipm701" -> "IPM701", "ipm590" -> "IPM590", "hf790" -> "HF790", "hf590" -> "HF590", "mg701" -> "MG701", "mg590" -> "MG590", "mk701" -> "MK701", "mk590" -> "MK590", "st701" -> "ST701", "st590" -> "ST590", "tx781" -> "TX781", "tx590" -> "TX590"), '_label -> "Which internship course you apply for")
+              			@b4.select(appForm("course"), options = Seq("none"-> "","ac701" -> "AC701", "ac590" -> "AC590", "cs701" -> "CS701", "cs590" -> "CS590", "cs881" -> "CS881", "ec701" -> "EC701", "es701" -> "ES701", "eth701" -> "ETH701", "fi701" -> "FI701", "fi590" -> "FI590", "fp781" -> "FP781", "fp590" -> "FP590","ib701" -> "IB701", "ipm701" -> "IPM701", "ipm590" -> "IPM590", "hf790" -> "HF790", "hf590" -> "HF590", "mg701" -> "MG701", "mg590" -> "MG590", "mk701" -> "MK701", "mk590" -> "MK590", "st701" -> "ST701", "st590" -> "ST590", "tx781" -> "TX781", "tx590" -> "TX590"), 'class -> "form-control required",'_label -> "Which internship course you apply for?*")
               		</div>
               		<div class="form-group">
-              			@b4.select(appForm("advisor_email"), options = Seq("none"-> "","ishosho@bentley.edu" -> "Shosho, Iva", "ssimeone@bentley.edu" -> "Simeone, Sara", "nblack@bentley.edu" -> "Black, Nicole"), '_label -> "Choose an academic advisor that you want to meet with:")
+              			@b4.select(appForm("advisor_email"), options = Seq("none"-> "","ishosho@bentley.edu" -> "Shosho, Iva", "ssimeone@bentley.edu" -> "Simeone, Sara", "nblack@bentley.edu" -> "Black, Nicole"), 'class -> "form-control required",'_label -> "Choose an academic advisor that you want to meet with*:")
               		</div>
               		<div class="form-group">
-                			@b4.textarea(appForm("description"), '_label -> "How this intenship related to your program", 'class -> "form-control", 'placeholder -> "It is a ...", 'rows -> "5", 'cols -> "4")
+                			@b4.textarea(appForm("description"), '_label -> "How this intenship related to your program*", 'class -> "form-control required", 'placeholder -> "It is a ...", 'rows -> "5", 'cols -> "4")
               		</div>
 
             		</div>

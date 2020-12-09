@@ -1,13 +1,16 @@
-@(topic: String, acct: Option[model.db.collections.Account])(implicit messages: Messages, flash: Flash)
+@(topic: String, acct: Option[model.db.collections.Account], res: Option[model.db.collections.Application])(implicit messages: Messages, flash: Flash)
+@import scala.util.Try
+
+@*(coordinator_status:String, advisor_status:String)*@ 
 
 @main(topic){
 	<div class="navbar-nav-link d-flex align-items-center">
-        <a><span style="margin:10px;">@acct.get.Email</span></a>
+        <a><span style="margin:10px;">@Try(acct.get.Email).getOrElse("Email Unknown")</span></a>
    		<a href="/logout">@messages("logout")</a>
    </div>
 }{
- <p><span style = "font-size:24px;">@acct.get.Name</span>
- <br>( @acct.get.AccountType )</p>
+ <p><span style = "font-size:24px;">@Try(acct.get.Name).getOrElse("Nobody")</span>
+ <br>( @Try(acct.get.AccountType).getOrElse("Unknown Account Type") )</p>
 }{
   <div class="content">
     <!-- Stats with progress -->
@@ -24,7 +27,7 @@
         <!-- Orders processed -->
         <div class="card card-body text-center bg-teal-400 has-bg-image">
           <div class="svg-center position-relative" id="progress_icon_three"></div>
-          <h2 class="progress-percentage mt-2 mb-1 font-weight-semibold">@messages("percentage")</h2>
+          <h2 class="progress-percentage mt-2 mb-1 font-weight-semibold">@messages("percentage")</h2> 
 
           Application Processed
           <div class="font-size-sm opacity-75">@messages("task_complete_count") tasks completed</div>
@@ -51,16 +54,17 @@
             </thead>
             
             <tbody>
+            @if(res.get == null) {
               <tr>
                 <td class="text-center">
-                  <input type="checkbox" class="font-size-sm text-muted line-height-1"><span> Pending</span>
+                  <p style="color:red;"><b>@messages("incomplete")</b></p>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
                     <div class="mr-3">
                     </div>
                     <div>
-                      <a href="/form" >1. Fill in Your Application Form</a>
+                     <a href="form" >@messages("process1")              
                     </div>
                   </div>
                 </td>
@@ -69,14 +73,14 @@
 
               <tr>
                 <td class="text-center">
-                  <input type="checkbox" class="font-size-sm text-muted line-height-1"><span> Pending</span>
+                  <input type="checkbox" class="font-size-sm text-muted line-height-1"><span> </span>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
                     <div class="mr-3">
                     </div>
                     <div>
-                      <a href="https://bentley.campus.eab.com/student/appointments/new" > 2. Set up an appointment with your academic advisor</a>
+                      <a href="https://bentley.campus.eab.com/student/appointments/new" > @messages("process2")</a>
                     
                   </div>
                 </td>
@@ -84,15 +88,14 @@
 
               <tr>
                 <td class="text-center">
-                  <i class="icon-cross2 text-danger-400"></i>
-                  <input type="checkbox" class="font-size-sm text-muted line-height-1"> Closed</div>
+                  <span style="color:red;"><b>@messages("incomplete")</b></span>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
                     <div class="mr-3">
                     </div>
                     <div>
-                      <a class="text-default font-weight-semibold">3. Application approved by your academic advisor</a>
+                      <a class="text-default font-weight-semibold">@messages("process3")</a>
                       
                     </div>
                   </div>
@@ -104,14 +107,14 @@
               <tr>
                 <td class="text-center">
                   <i class="icon-cross2 text-danger-400"></i>
-                  <input type="checkbox" class="font-size-sm text-muted line-height-1"> Closed</div>
+                  <p style="color:red;"><b>@messages("incomplete")</b></p>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
                     <div class="mr-3">
                     </div>
                     <div>
-                      <a class="text-default font-weight-semibold">4. Application approved by your coordinator</a> 
+                      <a class="text-default font-weight-semibold">@messages("process4")</a> 
                     </div>
                   </div>
                 </td>
@@ -121,20 +124,103 @@
               
                <tr>
                 <td class="text-center">
-                  <i class="icon-cross2 text-danger-400"></i>
-                  <input type="checkbox" class="font-size-sm text-muted line-height-1"> Closed</div>
+                  <p style="color:red;"><b>@messages("incomplete")</b></p>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
                     <div class="mr-3">
                     </div>
                     <div>
-                      <a class="text-default font-weight-semibold">5. Application approved by the Dean</a>
+                      <a class="text-default font-weight-semibold">@messages("process5")</a>
                     </div>
                   </div>
                 </td>
                 <td class="text-center"></td>
+              </tr>}else{
+              <tr>
+                <td class="text-center">
+                  @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else {<p style="color:green;">@messages("complete")}</p>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="mr-3">
+                    </div>
+                    <div>
+                     @if(res.get == null) {<a href="form" >@messages("process1")</a>} else { <a href="/review/@res.get.id"> @messages("review")</a>}              
+                    </div>
+                  </div>
+                </td>
+                <td></td>
               </tr>
+
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" class="font-size-sm text-muted line-height-1"><span> </span>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="mr-3">
+                    </div>
+                    <div>
+                      <a href="https://bentley.campus.eab.com/student/appointments/new" > @messages("process2")</a>
+                    
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="text-center">
+                  @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else {<p style="color:green;">@res.get.advisor_status}</p>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="mr-3">
+                    </div>
+                    <div>
+                      <a class="text-default font-weight-semibold">@messages("process3")</a>
+                      
+                    </div>
+                  </div>
+                </td>
+
+                <td class="text-center"></td>
+              </tr>
+              
+              <tr>
+                <td class="text-center">
+                  <i class="icon-cross2 text-danger-400"></i>
+                  @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else {<p style="color:green;">@res.get.coordinator_status}</p>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="mr-3">
+                    </div>
+                    <div>
+                      <a class="text-default font-weight-semibold">@messages("process4")</a> 
+                    </div>
+                  </div>
+                </td>
+
+                <td class="text-center"></td>
+              </tr>
+              
+               <tr>
+                <td class="text-center">
+                  <p style="color:red;"><b>@messages("incomplete")</b></p>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="mr-3">
+                    </div>
+                    <div>
+                      <a class="text-default font-weight-semibold">@messages("process5")</a>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-center"></td>
+              </tr>}              
+              
+             
               
             </tbody>
           </table>

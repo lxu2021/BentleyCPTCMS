@@ -9,9 +9,22 @@ task_total_count = 10
 logout = Logout
 submit = SUBMIT
 update = UPDATE
+complete = Complete
+incomplete = Incomplete
 
 
 # for coordinator
 num_applications_left = 3
 num_applications_done = 2
 application_deadline = April 1, 2021
+
+#for student
+process1 = 1. Fill in Your Application Form
+process2 = 2. Set up an appointment with your academic advisor
+process3 = 3. Application approved by your academic advisor
+process4 = 4. Application approved by your coordinator
+process5 = 5. Application approved by the Dean
+review = 1. Review Your Completed Application
+
+#course
+ac_590_link = http://academics.bentley.edu/departments/accountancy/graduate-courses-accounting#AC_590

@@ -54,7 +54,20 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
 //        Ok(views.html.review(res, "Review", acct))
 //      }
       case "login"                   => Ok(views.html.login(LoginForm.form,"Login"))
-      case "dashboard"               => Ok(views.html.index("Dashboard", acct))
+      case "dashboard"               => {
+        
+        //only logged-in users can view dashboard
+        var res = Try(Some(Application.findRecord(username.get))).getOrElse(None)
+        
+          if (username != None) {
+          var res = Try(Some(Application.findRecord(username.get))).getOrElse(None)
+          appLogger.info("Application Info: " + res)
+          
+          Ok(views.html.index("Dashboard", acct, res))
+        } else {
+          Ok(views.html.landing("Homepage"))
+        }
+      }
       case "academicrequirement"     => Ok(views.html.academicrequirement("Academic Requirement"))
       case _                         => Ok(views.html.landing("Homepage"))
     }
