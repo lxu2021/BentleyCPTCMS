@@ -25,8 +25,9 @@ import model.db.mongo.DataStore
 import play.api.Logger
 
 case class Application (id: String, name: String, email: String, international: Boolean,cpt: Boolean, major: String, concentration: Option[String], studentId:String,
-        gpa: Option[Double], school_start: Date, school_end: Date,company: String, position: String, start: Date, end: Date, credit_type: String, course:String,
-        description: String, coordinator_status: String, coordinator_email: Option[String], advisor_status: String, advisor_email: Option[String])
+        gpa: Option[Double], company: String, position: String, start: Date, end: Date, credit_type: String, course:String,
+        description: String, coordinator_status: String, coordinator_email: Option[String], coordinator_comment: String, advisor_status: String,
+        advisor_email: Option[String], advisor_comment: String)
     
 object Application extends DataStore  {
   
@@ -43,8 +44,9 @@ object Application extends DataStore  {
 
   //Creating new application
   def createApplication(name: String, email: String, international: Boolean,cpt: Boolean, major: String, concentration: Option[String], studentId:String,
-        gpa: Option[Double], school_start: Date, school_end: Date,company: String, position: String, start: Date, end: Date, credit_type: String, course:String,
-        description: String, coordinator_status: String = "pending", coordinator_email: Option[String], advisor_status: String = "pending", advisor_email: Option[String]) = {
+        gpa: Option[Double], company: String, position: String, start: Date, end: Date, credit_type: String, course:String,
+        description: String, coordinator_status: String = "pending", coordinator_email: Option[String], coordinator_comment: String, advisor_status: String = "pending",
+        advisor_email: Option[String], advisor_comment: String) = {
     
     val doc: Document = Document(
         "id" -> UUID.randomUUID().toString(),
@@ -55,9 +57,7 @@ object Application extends DataStore  {
         "major" -> major,
         "concentration" -> concentration,
         "studentId" -> studentId,
-        "gpa" -> gpa,  
-        "school_start" -> school_start,
-        "school_end" ->  school_end,
+        "gpa" -> gpa,
         "company" -> company,
         "position" -> position,
         "start" -> start,
@@ -68,8 +68,10 @@ object Application extends DataStore  {
         "created" -> new Date(),
         "coordinator_status" -> coordinator_status,
         "coordinator_email" -> coordinator_email,
+        "coordinator_comment" -> coordinator_comment,
         "advisor_status" -> advisor_status,
-        "advisor_email" -> advisor_email)
+        "advisor_email" -> advisor_email,
+        "advisor_comment" -> advisor_comment)
         
     val observable: Observable[Completed] = listings.insertOne(doc)
 
@@ -120,28 +122,28 @@ object Application extends DataStore  {
   }
   
   //Update advisor comments and status 
-  def advisorUpdate(applicationID:String, advisor_status:String) = {
+  def advisorUpdate(applicationID:String, advisor_status:String, advisor_comment:String) = {
     appLogger.info("Updating advisor result" )
     appLogger.info("Status " + advisor_status  )
     appLogger.info("APP ID " + applicationID  )     
      val oldApp = Application.findIdRecord(applicationID)
             val newApp = Application(applicationID,oldApp.name, oldApp.email, oldApp.international, oldApp.cpt, oldApp.major, oldApp.concentration, oldApp.studentId,
-                                      oldApp.gpa, oldApp.school_start, oldApp.school_end, oldApp.company, oldApp.position, oldApp.start, oldApp.end, 
-                                      oldApp.credit_type, oldApp.course, oldApp.description, oldApp.coordinator_status, oldApp.coordinator_email, advisor_status, oldApp.advisor_email)
+                                      oldApp.gpa, oldApp.company, oldApp.position, oldApp.start, oldApp.end, oldApp.credit_type, oldApp.course, oldApp.description,
+                                      oldApp.coordinator_status, oldApp.coordinator_email, oldApp.coordinator_comment, advisor_status, oldApp.advisor_email, advisor_comment)
             
             Application.update(newApp)
     
   }
   
-  //Update coordinator comments and status 
-  def coordinatorUpdate(applicationID:String, coordinator_status:String) = {
+  //Update coordinator comment and status 
+  def coordinatorUpdate(applicationID:String, coordinator_status:String, coordinator_comment:String) = {
     appLogger.info("Updating advisor result" )
     appLogger.info("Status " + coordinator_status  )
     appLogger.info("APP ID " + applicationID  )     
      val oldApp = Application.findIdRecord(applicationID)
             val newApp = Application(applicationID,oldApp.name, oldApp.email, oldApp.international, oldApp.cpt, oldApp.major, oldApp.concentration, oldApp.studentId,
-                                      oldApp.gpa, oldApp.school_start, oldApp.school_end, oldApp.company, oldApp.position, oldApp.start, oldApp.end, 
-                                      oldApp.credit_type, oldApp.course, oldApp.description, coordinator_status, oldApp.coordinator_email, oldApp.advisor_status, oldApp.advisor_email)
+                                      oldApp.gpa, oldApp.company, oldApp.position, oldApp.start, oldApp.end, oldApp.credit_type, oldApp.course, oldApp.description,
+                                      coordinator_status, oldApp.coordinator_email, coordinator_comment, oldApp.advisor_status, oldApp.advisor_email, oldApp.advisor_comment)
             
             Application.update(newApp)
     

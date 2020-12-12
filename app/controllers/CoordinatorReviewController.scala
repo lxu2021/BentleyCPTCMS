@@ -49,7 +49,7 @@ class CoordinatorReviewController @Inject() (cc: ControllerComponents) extends A
 //            BadRequest(views.html.form(formWithErrors)),
               
           form => {
-            Application.coordinatorUpdate(form.id, form.coordinator_status)
+            Application.coordinatorUpdate(form.id, form.coordinator_status, form.coordinator_comment)
             Redirect("/coordinator")    
           })
    }

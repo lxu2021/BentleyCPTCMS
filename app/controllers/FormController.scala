@@ -34,9 +34,9 @@ class FormController @Inject() (cc: ControllerComponents) extends AbstractContro
             
             Application.createApplication(
                 form.name, form.email, form.international, form.cpt, form.major, form.concentration, form.studentId,
-                form.gpa, form.school_start,form.school_end, form.company, form.position, form.start, form.end, 
-                form.credit_type, form.course, form.description, form.coordinator_status, form.coordinator_email,
-                form.advisor_status, form.advisor_email)
+                form.gpa, form.company, form.position, form.start, form.end, form.credit_type, form.course, form.description,
+                form.coordinator_status, form.coordinator_email, form.coordinator_comment, form.advisor_status,
+                form.advisor_email, form.advisor_comment)
             Redirect("/dashboard")    
           })
    }

@@ -14,7 +14,7 @@
 <div class="content">
 	
 	@*in order to create and update the form: Need to create a if statement like the superhero-testing create view*@
-	@b4.vertical.formCSRF(routes.AdvisorReviewController.formSubmit(), 'id -> "advisorForm", 'class -> "wizard-form steps-validation wizard clearfix") {implicit vfc =>
+	@b4.vertical.formCSRF(routes.AdvisorReviewController.formSubmit(), 'id -> "AdvisorForm", 'class -> "wizard-form steps-validation wizard clearfix") {implicit vfc =>
 		<div class="card" style="padding:30px;">
       		<div class="card-header bg-white header-elements-inline">
         			<h5 class="card-title">Application Form</h5>
@@ -36,6 +36,11 @@
 						@b4.select(appForm("advisor_status"), options = Seq("pending" -> "Pending", "approved" -> "Approved", "rejected" -> "Rejected"), 'value -> {res.get.advisor_status}, '_label -> "Appproval Status")
            			</div>
        			</div>
+       			<div class="col-md-6">
+      				<div class="form-group">
+						@b4.text(appForm("advisor_comment"), '_label -> "Advisor Comment", 'class -> "form-control required", 'value -> {res.get.advisor_comment})
+           			</div>
+      			</div>
       		</div>
 			
 			<br>

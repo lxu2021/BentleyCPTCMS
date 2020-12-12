@@ -49,7 +49,7 @@ class AdvisorReviewController @Inject() (cc: ControllerComponents) extends Abstr
 //            BadRequest(views.html.form(formWithErrors)),
               
           form => {
-            Application.advisorUpdate(form.id, form.advisor_status)
+            Application.advisorUpdate(form.id, form.advisor_status, form.advisor_comment)
             Redirect("/advisor")    
           })
    }

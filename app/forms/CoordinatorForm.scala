@@ -10,12 +10,14 @@ object CoordinatorForm {
       mapping(
           "id"-> nonEmptyText,
           "coordinator_status" -> nonEmptyText,
+          "coordinator_comment" -> nonEmptyText,
           )(Data.apply)(Data.unapply)
         )
   
   case class Data(
         id: String,
         coordinator_status: String,
+        coordinator_comment: String
         )
   
 }

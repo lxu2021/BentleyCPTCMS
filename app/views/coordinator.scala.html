@@ -34,7 +34,7 @@
               @if(item.coordinator_status=="pending") {
               <tr>
                 <td class="text-center">
-                  <div class="font-size-sm text-muted line-height-1">@item.coordinator_status</div>
+                  <div class="font-size-sm text-muted line-height-1">@item.coordinator_status.capitalize</div>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
@@ -60,9 +60,10 @@
         </div>
       </div>
     </div>
+    
     <div class="mb-3 pt-2">
       <h6 class="mb-0 font-weight-semibold">
-        Applications Reviewed
+        Rejected Applications
       </h6>
     </div>
     <div>
@@ -80,10 +81,60 @@
             
             <tbody>
             @res.map { item =>  
-              @if(item.coordinator_status!="pending") {
+              @if(item.coordinator_status=="rejected") {
               <tr>
                 <td class="text-center">
-                  <div class="font-size-sm text-muted line-height-1">@item.coordinator_status</div>
+                  <div class="font-size-sm text-muted line-height-1">@item.coordinator_status.capitalize</div>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <a href="#" class="text-default font-weight-semibold letter-icon-title">@item.name</a>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <a href="#" class="text-default">
+                    <div class="font-weight-semibold">@item.description</div>
+                  </a>
+                </td>
+                <td>
+                 <a href=/review/@item.id class="text-default font-weight-semibold letter-icon-title">Review</a> | 
+                 <a href=/coordinator/update/@item.id class="text-default font-weight-semibold letter-icon-title">Update</a>
+                </td>
+              </tr>
+              }
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mb-3 pt-2">
+      <h6 class="mb-0 font-weight-semibold">
+        Approved Applications
+      </h6>
+    </div>
+    <div>
+      <div class="card">
+        <div class="table-responsive">
+          <table class="table text-nowrap">
+            <thead>
+              <tr>
+                <th style="width: 50px">Status</th>
+                <th style="width: 300px;">Student</th>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+            @res.map { item =>  
+              @if(item.coordinator_status=="approved") {
+              <tr>
+                <td class="text-center">
+                  <div class="font-size-sm text-muted line-height-1">@item.coordinator_status.capitalize</div>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">

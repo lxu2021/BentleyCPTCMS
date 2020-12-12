@@ -10,12 +10,14 @@ object AdvisorForm {
       mapping(
           "id"-> nonEmptyText,
           "advisor_status" -> nonEmptyText,
+          "advisor_comment" -> nonEmptyText
           )(Data.apply)(Data.unapply)
         )
   
   case class Data(
         id: String,
         advisor_status: String,
+        advisor_comment: String
         )
   
 }

@@ -36,6 +36,11 @@
 						@b4.select(appForm("coordinator_status"), options = Seq("pending" -> "Pending", "approved" -> "Approved", "rejected" -> "Rejected"), 'value -> {res.get.coordinator_status}, '_label -> "Appproval Status")
            			</div>
        			</div>
+       			<div class="col-md-6">
+      				<div class="form-group">
+						@b4.text(appForm("coordinator_comment"), '_label -> "Coordinator Comment", 'class -> "form-control required", 'value -> {res.get.coordinator_comment})
+           			</div>
+      			</div>
       		</div>
 			
 			<br>
