@@ -1,4 +1,4 @@
-@(res: Option[model.db.collections.Application], page: String, acct: Option[model.db.collections.Account])(implicit request: RequestHeader, messages: Messages, flash: Flash)
+@(res: Option[model.db.collections.Application], page: String, acct: Option[model.db.collections.Account], appForm: Form[forms.AppForm.Data])(implicit request: RequestHeader, messages: Messages, flash: Flash)
 @import b4.vertical.fieldConstructor
 @import java.time.format.DateTimeFormatter
 @implicitFieldConstructor = @{ b4.vertical.fieldConstructor() }
@@ -14,6 +14,7 @@
  <br>( @acct.get.AccountType )</p>
 }{
 <div class="content">
+@b4.vertical.formCSRF(routes.AdvisorReviewController.formSubmit(), 'id -> "AdvisorForm", 'class -> "wizard-form steps-validation wizard clearfix") {implicit vfc =>
 <h5 class="card-title">Submitted Application</h5>
 	<div class = "wizard-form steps-validation wizard clearfix">
 		<div class="card" style="padding:30px ;">
@@ -138,8 +139,42 @@
             		</div>
           	</div>
         </div>
+        <div class="card" style="padding:30px;">
+      		<div class="card-header bg-white header-elements-inline">
+        			<h5 class="card-title">Advisor Review</h5>
+        			<div class="header-elements">
+
+        			</div>
+      		</div>
+      		<br>
+      		
+      		<div class="row">
+      			<div class="col-md-6" style="display:none">
+      				<div class="form-group">
+						@b4.text(appForm("id"), '_label -> "Application ID", 'class -> "form-control required", 'value -> {res.get.id})
+           			</div>
+      			</div>
+      			<div class="col-md-6">
+					<div class="form-group">
+						@b4.select(appForm("advisor_status"), options = Seq("pending" -> "Pending", "approved" -> "Approved", "rejected" -> "Rejected"), 'value -> {res.get.advisor_status}, '_label -> "Appproval Status")
+           			</div>
+       			</div>
+       			<div class="col-md-6">
+      				<div class="form-group">
+						@b4.text(appForm("advisor_comment"), '_label -> "Advisor Comment", 'class -> "form-control required", 'value -> {res.get.advisor_comment})
+           			</div>
+      			</div>
+      		</div>
+			
+			<br>
+         
+          	<div class = "row">
+          		<button type="submit" class="btn btn-primary legitRipple" role="button" action="submit"> @messages("submit") </button>
+          	</div>
+        </div>
    <!--       @b4.static(Html("<hr>")){ <a href="/create?update"><i class="fa fa-star"></i> @messages ("update")</a> }
  -->
+ }
   	</div>
  </div>
           <!-- /wizard with validation -->

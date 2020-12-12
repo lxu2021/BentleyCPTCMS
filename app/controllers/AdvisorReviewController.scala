@@ -30,7 +30,7 @@ class AdvisorReviewController @Inject() (cc: ControllerComponents) extends Abstr
     val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
     val res = Try(Some(Application.findIdRecord(id))).getOrElse(None)
     
-    Ok(views.html.advisorreview(res, "Advisor Application Review",acct))
+    Ok(views.html.advisorreview(res, "Advisor Application Review",acct, AppForm.form ))
   }
   
 

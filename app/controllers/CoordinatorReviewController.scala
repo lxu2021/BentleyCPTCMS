@@ -30,7 +30,7 @@ class CoordinatorReviewController @Inject() (cc: ControllerComponents) extends A
     val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
     val res = Try(Some(Application.findIdRecord(id))).getOrElse(None)
     
-    Ok(views.html.coordinatorreview(res, "Coordinator Application Review",acct))
+    Ok(views.html.coordinatorreview(res, "Coordinator Application Review",acct, AppForm.form))
   }
   
 

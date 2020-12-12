@@ -185,7 +185,6 @@ input[type=file].form-control-sm[data-fouc] {
     .wizard-form[data-fouc]:not(.wizard) fieldset:not(:first-of-type),
     .wizard-form[data-fouc]:not(.wizard) h6 {
       display: none; }
-
 input[type=text].colorpicker-flat-full[data-fouc] {
   height: 285px; }
 
