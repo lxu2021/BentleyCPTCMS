@@ -15,6 +15,7 @@ import org.mongodb.scala.Observer
 import org.mongodb.scala.MongoClient.DEFAULT_CODEC_REGISTRY
 import org.mongodb.scala.bson.codecs.Macros.createCodecProvider
 import org.mongodb.scala.model.Filters._
+import model.db.collections.Course
 
 //Cloudinary
 import utils.config.CloudinaryCDN
@@ -47,7 +48,7 @@ object Application extends DataStore  {
         gpa: Option[Double], company: String, position: String, start: Date, end: Date, credit_type: String, course:String,
         description: String, coordinator_status: String = "pending", coordinator_email: Option[String], coordinator_comment: String, advisor_status: String = "pending",
         advisor_email: Option[String], advisor_comment: String, dean_status: String = "pending") = {
-    
+    val coordinator_emailUpdate = Course.findCoor(course).toString
     val doc: Document = Document(
         "id" -> UUID.randomUUID().toString(),
         "name" -> name,
@@ -66,7 +67,7 @@ object Application extends DataStore  {
         "description" -> description,
         "created" -> new Date(),
         "coordinator_status" -> coordinator_status,
-        "coordinator_email" -> coordinator_email,
+        "coordinator_email" -> coordinator_emailUpdate,
         "coordinator_comment" -> coordinator_comment,
         "advisor_status" -> advisor_status,
         "advisor_email" -> advisor_email,
