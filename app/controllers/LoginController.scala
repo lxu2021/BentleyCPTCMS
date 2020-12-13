@@ -53,6 +53,8 @@ class LoginController @Inject() (cc: ControllerComponents) extends AbstractContr
             case "Student" => Redirect("/dashboard").withSession("username" -> acc.Email)
             case "Advisor" => Redirect("/advisor").withSession("username" -> acc.Email)
             case "Coordinator" => Redirect("/coordinator").withSession("username" -> acc.Email) 
+            case "Dean" => Redirect("/dean").withSession("username" -> acc.Email)
+            case "CISS" => Redirect("/ciss").withSession("username" -> acc.Email)
             case _ => Redirect(routes.HomeController.landing()) //I dont know what type of user you are
           }
         } else {

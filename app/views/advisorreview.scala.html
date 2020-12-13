@@ -4,11 +4,10 @@
 @implicitFieldConstructor = @{ b4.vertical.fieldConstructor() }
 
 @main(page){
-	<a href="#" class="navbar-nav-link d-flex align-items-center">
-       <img src="@routes.Assets.versioned("images/profile_icon.png")" class="rounded-circle mr-2" height="34" alt="">
-       <span>@acct.get.Email</span>
-   <a href="/logout">@messages("logout")</a>
-   </a>
+	<div class="navbar-nav-link d-flex align-items-center">
+        <a><span style="margin:10px;">@acct.get.Email</span></a>
+   		<a href="/logout">@messages("logout")</a>
+   </div>
 }{
  <p><span>@acct.get.Name</span>
  <br>( @acct.get.AccountType )</p>

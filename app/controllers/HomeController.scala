@@ -49,10 +49,16 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
         appLogger.info("Result is: " + res)
         Ok(views.html.advisor("Advisor", acct, res))
       }
-//      case "review"                  => {
-//        val res = Try(Some(Application.findRecord(username.get))).getOrElse(None)
-//        Ok(views.html.review(res, "Review", acct))
-//      }
+      case "ciss"             => {
+        val res = Application.findInternational()
+        appLogger.info("Result is: " + res)
+        Ok(views.html.ciss("CISS", acct, res))
+      }
+      case "dean"             => {
+        val res = Application.findForDean()
+        appLogger.info("Result is: " + res)
+        Ok(views.html.dean("Dean", acct, res))
+      }
       case "login"                   => Ok(views.html.login(LoginForm.form,"Login"))
       case "dashboard"               => {
         

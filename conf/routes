@@ -4,19 +4,21 @@
 # ~~~~
 
 # An example controller showing basic website route navigation
-GET   /                    controllers.HomeController.landing
-GET   /logout			   controllers.LoginController.logout
-POST  /login               controllers.LoginController.loginAccount
-GET   /:page               controllers.HomeController.loadPage(page)
-POST  /applicationForm     controllers.FormController.formSubmit
-GET   /review/:id          controllers.ReviewController.review(id)
-#POST  /review/:id          controllers.ReviewController.processReview(id)
-GET   /advisor/update/:id          controllers.AdvisorReviewController.update(id)
-GET   /advisor/review/:id          controllers.AdvisorReviewController.review(id)
-POST  /advisorUpdate     controllers.AdvisorReviewController.formSubmit
+GET   /                          controllers.HomeController.landing
+GET   /logout			        controllers.LoginController.logout
+POST  /login                     controllers.LoginController.loginAccount
+GET   /:page                     controllers.HomeController.loadPage(page)
+POST  /applicationForm           controllers.FormController.formSubmit
+GET   /review/:id                controllers.ReviewController.review(id)
+#POST  /review/:id               controllers.ReviewController.processReview(id)
+GET   /advisor/update/:id        controllers.AdvisorReviewController.update(id)
+GET   /advisor/review/:id        controllers.AdvisorReviewController.review(id)
+POST  /advisorUpdate             controllers.AdvisorReviewController.formSubmit
 GET   /coordinator/update/:id	controllers.CoordinatorReviewController.update(id)
-GET   /coordinator/review/:id          controllers.CoordinatorReviewController.review(id)
-POST  /coordinatorUpdate		controllers.CoordinatorReviewController.formSubmit
+GET   /coordinator/review/:id    controllers.CoordinatorReviewController.review(id)
+POST  /coordinatorUpdate		    controllers.CoordinatorReviewController.formSubmit
+GET   /dean/review/:id    		controllers.DeanReviewController.review(id)
+POST  /deanUpdate		    		controllers.DeanReviewController.formSubmit
 
 
 # Map static resources from the /public folder to the /assets URL path
