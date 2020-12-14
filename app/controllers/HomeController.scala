@@ -39,35 +39,60 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
     page match {
       case "form"                    => Ok(views.html.form(AppForm.form, "Form", acct))
       case "department"              => Ok(views.html.department("Department", acct))
+      
       case "coordinator"             => {
         val res = Application.findEmail(username.get)
-        appLogger.info("Result is: " + res)
+        
+        //only coordinator can view coordinator page
+        if (acct.get.AccountType == "Coordinator"){
+        appLogger.info("Coordinator is: " + res)
         Ok(views.html.coordinator("Coordinator", acct, res))
+        }else{
+          Ok(views.html.landing("Homepage"))          
+        }
       }
+      
       case "advisor"             => {
         val res = Application.findAdvisorEmail(username.get)
         appLogger.info("Result is: " + res)
+        
+        //only advisor can view advisor page
+        if (acct.get.AccountType == "Advisor"){
+        appLogger.info("Advisor is: " + res)
         Ok(views.html.advisor("Advisor", acct, res))
+        }else{
+          Ok(views.html.landing("Homepage"))          
+        }
+                
       }
-//      case "review"                  => {
-//        val res = Try(Some(Application.findRecord(username.get))).getOrElse(None)
-//        Ok(views.html.review(res, "Review", acct))
-//      }
+      
+        //only logged-in advisor users can view dashboard
+//        var res = Try(Some(Application.findAdvisorEmail(username.get))).getOrElse(None)
+//        
+//          if (username != None && acct.get.AccountType == "Advisor") {
+//          var res = Try(Some(Application.findAdvisorEmail(username.get))).getOrElse(None)
+//          appLogger.info("Application Info: " + res)
+//          Ok(views.html.advisor("Advisor", acct, res))
+//          }else{
+//             Ok(views.html.landing("Homepage"))          
+//          }
+//        }
+
       case "login"                   => Ok(views.html.login(LoginForm.form,"Login"))
       case "dashboard"               => {
         
-        //only logged-in users can view dashboard
+        //only logged-in student users can view dashboard
         var res = Try(Some(Application.findRecord(username.get))).getOrElse(None)
         
-          if (username != None) {
+          if (username != None && acct.get.AccountType == "Student") {
           var res = Try(Some(Application.findRecord(username.get))).getOrElse(None)
           appLogger.info("Application Info: " + res)
-          
           Ok(views.html.index("Dashboard", acct, res))
-        } else {
-          Ok(views.html.landing("Homepage"))
+          }else{
+             Ok(views.html.landing("Homepage"))          
+          }
         }
-      }
+      
       case "academicrequirement"     => Ok(views.html.academicrequirement("Academic Requirement"))
       case _                         => Ok(views.html.landing("Homepage"))
     }
