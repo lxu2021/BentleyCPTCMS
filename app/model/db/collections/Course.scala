@@ -14,7 +14,9 @@ import org.mongodb.scala.Observable
 import org.mongodb.scala.Observer
 import org.mongodb.scala.MongoClient.DEFAULT_CODEC_REGISTRY
 import org.mongodb.scala.bson.codecs.Macros.createCodecProvider
-import org.mongodb.scala.model.Filters.equal
+import org.mongodb.scala.model.Filters._
+import org.mongodb.scala.model.Projections._
+
 
 //Cloudinary
 import utils.config.CloudinaryCDN

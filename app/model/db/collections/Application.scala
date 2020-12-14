@@ -48,7 +48,9 @@ object Application extends DataStore  {
         gpa: Option[Double], company: String, position: String, start: Date, end: Date, credit_type: String, course:String,
         description: String, coordinator_status: String = "pending", coordinator_email: Option[String], coordinator_comment: String, advisor_status: String = "pending",
         advisor_email: Option[String], advisor_comment: String, dean_status: String = "pending") = {
+    
     val coordinator_emailUpdate = Course.findCoor(course).toString
+    
     val doc: Document = Document(
         "id" -> UUID.randomUUID().toString(),
         "name" -> name,
