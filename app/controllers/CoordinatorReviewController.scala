@@ -24,6 +24,7 @@ class CoordinatorReviewController @Inject() (cc: ControllerComponents) extends A
   //Setup an application logger
   val appLogger: Logger = Logger("form")
   
+   //showing the views of the dean page and the student's applications which coordinator's email equal to the account email
   def review(id:String) = Action { implicit request: Request[AnyContent] =>
 
     val username = request.session.get("username")
@@ -33,7 +34,7 @@ class CoordinatorReviewController @Inject() (cc: ControllerComponents) extends A
     Ok(views.html.coordinatorreview(res, "Coordinator Application Review",acct, AppForm.form))
   }
   
-
+// showing the student's application to make a change on the status
  def update(id:String) = Action { implicit request: Request[AnyContent] =>
 
     val username = request.session.get("username")
@@ -43,10 +44,10 @@ class CoordinatorReviewController @Inject() (cc: ControllerComponents) extends A
        Ok(views.html.coordinatorform(AppForm.form, "Coordinator Form Update", acct, res))
    }
  
+ //post the coordinator status to the application form
  def formSubmit() = Action{implicit request =>
      CoordinatorForm.form.bindFromRequest.fold(
          formWithErrors => Ok(formWithErrors.toString),
-//            BadRequest(views.html.form(formWithErrors)),
               
           form => {
             Application.coordinatorUpdate(form.id, form.coordinator_status, form.coordinator_comment)

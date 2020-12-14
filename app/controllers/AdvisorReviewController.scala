@@ -24,6 +24,7 @@ class AdvisorReviewController @Inject() (cc: ControllerComponents) extends Abstr
   //Setup an application logger
   val appLogger: Logger = Logger("form")
   
+   //showing the views of the dean page and the student's applications which assigned advisor's email equal to the account email
   def review(id:String) = Action { implicit request: Request[AnyContent] =>
 
     val username = request.session.get("username")
@@ -33,7 +34,7 @@ class AdvisorReviewController @Inject() (cc: ControllerComponents) extends Abstr
     Ok(views.html.advisorreview(res, "Advisor Application Review",acct, AppForm.form ))
   }
   
-
+// showing the student's application to make a change on the status
  def update(id:String) = Action { implicit request: Request[AnyContent] =>
 
     val username = request.session.get("username")
@@ -43,10 +44,10 @@ class AdvisorReviewController @Inject() (cc: ControllerComponents) extends Abstr
        Ok(views.html.advisorform(AppForm.form, "Advisor Form Update", acct, res))
    }
  
+ //post the advisor status to the application form
  def formSubmit() = Action{implicit request =>
      AdvisorForm.form.bindFromRequest.fold(
          formWithErrors => Ok(formWithErrors.toString),
-//            BadRequest(views.html.form(formWithErrors)),
               
           form => {
             Application.advisorUpdate(form.id, form.advisor_status, form.advisor_comment)

@@ -23,6 +23,7 @@ class ReviewController @Inject() (cc: ControllerComponents) extends AbstractCont
   //Setup an application logger
   val appLogger: Logger = Logger("form")
   
+  //showing the views of student application ---> mostly will be used for CISS department
   def review(id:String) = Action { implicit request: Request[AnyContent] =>
 
     val username = request.session.get("username")

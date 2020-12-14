@@ -23,12 +23,10 @@ class FormController @Inject() (cc: ControllerComponents) extends AbstractContro
   //Setup an application logger
   val appLogger: Logger = Logger("form")
   
-
-    
+  //post the student application and redirected to the dashboard to see the status update
     def formSubmit() = Action{implicit request =>
      AppForm.form.bindFromRequest.fold(
          formWithErrors => Ok(formWithErrors.toString),
-//            BadRequest(views.html.form(formWithErrors)),
               
           form => {
             
@@ -40,7 +38,6 @@ class FormController @Inject() (cc: ControllerComponents) extends AbstractContro
             Redirect("/dashboard")    
           })
    }
-  
 
 
 }

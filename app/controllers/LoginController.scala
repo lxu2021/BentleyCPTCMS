@@ -22,12 +22,6 @@ class LoginController @Inject() (cc: ControllerComponents) extends AbstractContr
   //Setup an application logger
   val appLogger: Logger = Logger("application")
 
-  //  def read(email:String) = Action { implicit request: Request[AnyContent] =>
-  //
-  //    val res = Application.findRecord(email)
-  //    Ok(views.html.review(res, "Review Submitted Application"))
-  //  }
-
   /**
    * Logs a user in
    * modified by Prof. Matra
