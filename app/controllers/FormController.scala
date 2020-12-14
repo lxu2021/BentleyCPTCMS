@@ -40,6 +40,7 @@ class FormController @Inject() (cc: ControllerComponents) extends AbstractContro
             Redirect("/dashboard")    
           })
    }
+  
 
 
 }

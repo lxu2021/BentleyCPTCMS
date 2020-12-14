@@ -10,7 +10,7 @@
 
 	<!-- Global stylesheets -->
 	 <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-     <link href="@routes.Assets.versioned("css/icons/icomoon/styles.min.css")" rel="stylesheet" type="text/css">
+     <link href="@routes.Assets.versioned("css/styles.min.css")" rel="stylesheet" type="text/css">
      <link href="@routes.Assets.versioned("css/bootstrap.min.css")" rel="stylesheet" type="text/css">
      <link href="@routes.Assets.versioned("css/bootstrap_limitless.min.css")" rel="stylesheet" type="text/css">
      <link href="@routes.Assets.versioned("css/layout.min.css")" rel="stylesheet" type="text/css">
@@ -18,15 +18,17 @@
      <link href="@routes.Assets.versioned("css/colors.min.css")" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
 
-	<!-- Core JS files -->
-	<script src="@routes.Assets.versioned("/js/main/jquery.min.js")"></script>
-	<script src="@routes.Assets.versioned("/js//main/bootstrap.bundle.min.js")"></script>
-	<script src="@routes.Assets.versioned("/js/plugins/loaders/blockui.min.js")"></script>
+	<!-- Core JS files -->	
+	<script src="@routes.Assets.versioned("js/jquery-3.2.1.slim.min.js")"></script>
+	<script src="@routes.Assets.versioned("js/popper.min.js")"></script>
+	<script src="@routes.Assets.versioned("js/bootstrap.min.js")"></script>
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
-	<script src="@routes.Assets.versioned("assets/js/app.js")"></script>
+	<script src="@routes.Assets.versioned("js/app.js")"></script>
+	<script src="@routes.Assets.versioned("js/demo_pages/components_collapsible.js")"></script>
 	<!-- /theme JS files -->
+
 
 </head>
 
@@ -100,111 +102,360 @@
 					<div class="card-body">
 					<p><a href="#academic requirements">Academic Requirements</a></p>
 
-					<p><a href="#one-credit prereqs">Course Prerequisities for One-Credit Internships</a></p>
+					<p><a href="#1 credit">Course Prerequisites for One-Credit Internships</a></p>
 					
-					<p><a href="#three-credit prereqs">Course Prerequisites for Three-Credit Internships</a></p>
+					<p><a href="#3 credits">Course Prerequisites for Three-Credit Internships</a></p>
 						
-						</ul><h3>Internships For Credit</h3>
+						</ul><h3 class="mb-0 font-weight-semibold">Internships For Credit</h3>
 						<p> Internships for credit are temporary practical work experiences guided by academic knowledge and overseen by a faculty member. Internship courses afford students the opportunity to obtain skills in a practical work setting while integrating classroom concepts with professional expectations.</p>
 						
-							<h3><a name="academic requirements" id="academic requirements"></a>General Requirements</h3>
-							<ul><li>All required work for an internship must be completed during the term of registration.</li>
-								<li>Students are expected to work 20 hours per week for a minimum of 12 weeks, unless otherwise noted.</li>
-								<li>Students must have an overall GPA of 3.0, unless otherwise noted below.</li>
+							<h3 class="mb-0 font-weight-semibold"><a name="academic requirements" id="academic requirements"></a>General Requirements</h3>
+							<ul><li>All required work for an internship must be completed during the term of registration</li>
+								<li>Students are expected to work 20 hours per week for a minimum of 12 weeks, unless otherwise noted</li>
+								<li>Students must have an overall GPA of 3.0, unless otherwise noted</li>
+								<li>Graduate assistants must obtain permission to register for an internship course. Please email <a href="mailto:achircu@@bentley.edu">Associate Dean of Business, Alina Chircu</a></li>
+								<li>Entire application process, including faculty submission of student information to Registrar, must be completed no later than the add/drop deadline of each semester</li>
+								<li>Any courses dropped to accommodate internship course registration beyond the add/drop deadline of each semester are subject to <a href="https://www.bentley.edu/offices/registrar/dates-and-deadlines" target="_blank">published refund deadlines</a></li>
+								<li>Regular withdrawal deadlines and penalties apply once the student has been registered for the internship course through the Registrar’s Office</li>
+								<li>Regular grade reporting deadlines apply</li>
+							</ul>
+
+						<!-- Program-specific Requirements -->
+						
+						<div class="mb-3 pt-2">
+							<h3 class="mb-0 font-weight-semibold">
+								Program-specific Requirements
+							</h3>
+						</div>
+
+						<div class="card-group-control card-group-control-left" id="accordion-control">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">
+										<a data-toggle="collapse" class="text-default" href="#program-MBA" >Emerging Leaders MBA and Masters</a>
+									</h5>
+								</div>
+
+								<div id="program-MBA" class="collapse" data-parent="#program">
+									<div class="card-body">
+										Must complete at least two semesters in the Emerging Leaders MBA or Masters/MBA program.
+									</div>
+								</div>
+							</div>
 							
-							</ul><h3>Program-Specific Requirements</h3>
-							<p><strong>Day/Emerging Leaders and MSMBA:</strong></p>
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">
+										<a data-toggle="collapse" class="text-default" href="#program-PMBA" >Evening/Professional MBA</a>
+									</h5>
+								</div>
+
+								<div id="program-PMBA" class="collapse" data-parent="#program">
+									<div class="card-body">
+										Must complete all MBA foundation courses, plus two additional courses.
+									</div>
+								</div>
+							</div>							
+
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">
+										<a data-toggle="collapse" class="text-default" href="#program-MSA" >Masters in Accounting</a>
+									</h5>
+								</div>
+
+								<div id="program-MSA" class="collapse" data-parent="#program">
+									<div class="card-body">
+										<ul><li>Completion of nine credit hours of accounting courses at the 500 -level or higher, and two semesters of grad coursework at Bentley or demonstrated academic understanding of accounting from undergraduate studies, at an intermediate or higher level</li>
+											<li>Must provide the names of two Master of Accounting faculty references</li>
+											<li>Must have a 3.0 GPA overall and in all accounting courses</li>
+											<li>May only do one one-credit internship and one three-credit internship in the Master of Accounting program</li>
+										</ul>
+									</div>
+								</div>
+							</div>
 							
-							<ul><li>Must complete all first year Day/Emerging Leaders MBA requirements.</li>
-							</ul><p><strong>Evening/Professional MBA:</strong></p>
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">
+										<a data-toggle="collapse" class="text-default" href="#program-MSBA" >Masters in Business Analytics</a>
+									</h5>
+								</div>
+
+								<div id="program-MSBA" class="collapse" data-parent="#program">
+									<div class="card-body">
+										May only do one one-credit internship and one three-credit internship in the Master of Business Analytics program.
+									</div>
+								</div>
+							</div>									
+
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">
+										<a data-toggle="collapse" class="text-default" href="#program-MSF" >Masters in Finance</a>
+									</h5>
+								</div>
+
+								<div id="program-MSF" class="collapse" data-parent="#program">
+									<div class="card-body">
+										Must complete at least two FI courses at the 500-level or higher.
+									</div>
+								</div>
+							</div>
 							
-							<ul><li>Must complete all MBA Foundation Courses plus two additional courses.</li>
-							</ul><p><strong>MSA:</strong></p>
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">
+										<a data-toggle="collapse" class="text-default" href="#program-MSMA" >Marketing Analytics</a>
+									</h5>
+								</div>
+
+								<div id="program-MSMA" class="collapse" data-parent="#program">
+									<div class="card-body">
+										<ul><li>Must complete at least two MK courses at the 500-level or higher for the three-credit internship.</li>
+											<li>May only do one one-credit internship and one three-credit internship in the Master of Marketing Analytics program</li>
+										</ul>
+									</div>
+								</div>
+							</div>							
+
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">
+										<a data-toggle="collapse" class="text-default" href="#program-DS" >Directed Study</a>
+									</h5>
+								</div>
+
+								<div id="program-DS" class="collapse" data-parent="#program">
+									<div class="card-body">
+            							<p>Students are limited to taking no more than two of the following to satisfy elective or concentration requirements: Global Business Experience courses, field-based directed study courses or credit-bearing internships. Individual programs may have further restrictions. Consult with a program director for details.</p>
+
+            							<h3>Preparation for Directed Study</h3>
+
+            							<p>Students interested in pursuing a directed study must prepare a syllabus in collaboration with the faculty member who will be supervising the directed study.</p>
+
+            							<p>The syllabus should include the following:</p>
+
+            							<ul><li>A brief description of the investigation</li>
+            								<li>Goals and objectives for the investigation</li>
+            								<li>A required readings bibliography</li>
+            								<li>Explanation of course deliverables</li>
+            								<li>Percentage attributed to each course deliverable</li>
+            								<li>Timeline for course deliverables and course completion</li>
+            								<li>Faculty evaluation methods for deliverables</li>
+            							</ul><p>Students must also complete a <a href="http://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/App%20DIR%20STUDY%20TUTORIAL%20Feb15_0.pdf" target="_blank">Directed Study Petition</a> and submit the proposed syllabus with the petition.</p>
+
+            							<p>Once complete, supervising faculty and department chairs will be required to sign off on the merit of the proposal. If approved, the student will be registered for the approved course.</p>
+
+            							<h3>Deadlines for Directed Study</h3>
+
+            							<ul><li>Requests for directed study must be submitted by the first day of the semester that the course will be taken.</li>
+            								<li>Approval must be granted prior to beginning the study.</li>
+            							</ul><h3>Cost of Directed Study</h3>
+
+            							<ul><li>Current tuition is charged for each directed study.</li>
+            							</ul><h3>Transcript Notation for Directed Study</h3>
+
+            							<ul><li>These courses will be recorded on the transcript with a notation of the topic investigated along with a corresponding course number assigned by an academic department.</li>
+            							</ul>
+									</div>
+								</div>
+							</div>	
 							
-							<ul><li>Completion of nine credit hours of accounting courses at the 600-level or higher, and two semesters of grad coursework at Bentley or demonstrated academic understanding of accounting from undergraduate studies, at an intermediate or higher level.</li>
-								<li>Must provide the names of two MSA faculty references.</li>
-								<li>Must have a 3.0 GPA overall and in all accounting courses.</li>
-								<li>May only do one one-credit internship and one three-credit internship in MSA Program.</li>
-							</ul><p><strong>MSF: </strong></p>
-							
-							<ul><li>Must have a 3.25 GPA overall and in required FI courses.</li>
-								<li>Must complete at least four FI courses at the 600-level or higher.</li>
-							</ul><p><strong>MSMA: </strong></p>
-							
-							<ul><li>Must complete at least two MK courses at the 600-level or higher.</li>
-							</ul><h3><a name="one-credit prereqs" id="one-credit prereqs"></a>Course Prerequisities for One-Credit Internships</h3>
-							
-							<p><a href="http://academics.bentley.edu/departments/accountancy/graduate-courses-accounting#AC_590" target="_blank">AC 590 Internship in Accounting Practice</a><br />
-							Note: Students must work a minimum of 15 hours per week for a minimum of ten weeks  </p>
-							
-							<p>CS 590 Internship in Information Technology<br />
-							Note: Students must work a minimum of 120 hours</p>
-							
-							<p><a href="http://academics.bentley.edu/departments/finance/graduate-finance-courses#FI_590" target="_blank">FI 590 Internship in Finance</a><br />
-							Note: Students must work a minimum of 240 hours</p>
-							
-							<p><a href="http://academics.bentley.edu/departments/law-taxation-and-financial-planning/financial-planning-courses#FP_590" target="_blank">FP 590 Internship in Financial Planning Practice</a><br />
-							Note: Students must work a minimum of 15 hours per week for a minimum of ten weeks</p>
-							
-							<p><a href="http://academics.bentley.edu/departments/idcc/graduate-hfid-courses#HF_590" target="_blank">HF 590 Internship in HFID</a><br />
-							Note: Students must work a minimum of 120 hours</p>
-							
-							<p>IPM 590 Internship in Information Process Management<br />
-							Note: Students must work a minimum of 120 hours</p>
-							
-							<p><a href="http://academics.bentley.edu/departments/management/graduate-management-courses#MG_590" target="_blank">MG 590 Internship in Management</a><br />
-							Note: Students must work a minimum of 200 hours</p>
-							
-							<p><a href="http://academics.bentley.edu/departments/law-taxation-and-financial-planning/taxation-courses#TX_590" target="_blank">TX 590 Internship in Tax Practice</a><br />
-							Note: Students must work a minimum of 15 hours per week for a minimum of ten weeks</p>
-							
-							<h3><a name="three-credit prereqs" id="three-credit prereqs"></a>Course Prerequisities for Three-Credit Internships</h3>
-							
-							<p><a href="http://academics.bentley.edu/departments/accountancy/graduate-courses-accounting#AC_701" target="_blank">AC 701 Internship in Accounting Practice</a><br />
-							Note: Students are expected to work 35 hours per week for a minimum of 10 weeks</p>
-							
-							<p><a href="http://academics.bentley.edu/departments/computer-information-systems/msit-course-descriptions#CS_701" target="_blank">CS 701 Internship in Information Technology</a></p>
-							
-							<p><a href="http://academics.bentley.edu/departments/computer-information-systems/msit-course-descriptions#CS_881" target="_blank">CS 881 CIS Internship</a></p>
-							
-							<p><a href="http://academics.bentley.edu/departments/economics/graduate-economics-courses#EC_701" target="_blank">EC 701 Internship in Business Economics</a></p>
-							
-							<p><a href="http://academics.bentley.edu/departments/management/graduate-management-courses#ES_701" target="_blank">ES 701 Entrepreneurship Practicum</a><br />
-							Note: Students are expected to work a minimum of 200 hours across one term</p>
-							
-							<p>ETH 701 Internship in Business Ethics</p>
-							
-							<p><a href="http://academics.bentley.edu/departments/finance/graduate-finance-courses#FI_701" target="_blank">FI 701 Internship in Finance</a></p>
-							
-							<p><a href="http://academics.bentley.edu/departments/law-taxation-and-financial-planning/financial-planning-courses#FP_781" target="_blank">FP 781 Internship in Financial Planning Practice</a><br />
-							Note: Students are expected to work 35 hours per week for a minimum of 10 weeks</p>
-							
-							<p><a href="http://academics.bentley.edu/departments/idcc/graduate-hfid-courses#HF_790" target="_blank">HF 790 Internship in Human Factors in Information Design</a><br />
-							Note: Students are expected to work a minimum of 120 hours across one term</p>
-							
-							<p><a href="http://academics.bentley.edu/departments/management/graduate-management-courses#IB_701" target="_blank">IB 701 Internship in International Business</a></p>
-							
-							<p><a href="http://academics.bentley.edu/departments/information-and-process-management/graduate-ipm-courses#IPM_701" target="_blank">IPM 701 Internship in Information Process Management</a></p>
-							
-							<p><a href="http://academics.bentley.edu/departments/management/graduate-management-courses#MG_701">MG 701 Internship in Management</a><br />
-							Note: Students are expected to work a minimum of 200 hours across one term</p>
-							
-							<p><a href="http://academics.bentley.edu/departments/marketing/graduate-marketing-courses#MK_701" target="_blank">MK 701 Internship in Marketing Practice</a><br />
-							Note: Students are expected to work 12 hours per week for a minimum of 10 weeks</p>
-							
-							<p><a href="http://academics.bentley.edu/departments/management/graduate-management-courses#OM_701" target="_blank">OM 701 Internship in Operations Management</a></p>
-							
-							<p><a href="http://academics.bentley.edu/departments/mathematical-sciences/graduate-mathematics-courses#ST_701" target="_blank">ST 701 Internship in Business Data Analysis</a><br />
-							Note: Students are expected to work 15 hours per week for a minimum of 12 weeks</p>
-							
-							<p><a href="http://academics.bentley.edu/departments/law-taxation-and-financial-planning/taxation-courses#TX_781" target="_blank">TX 781 Internship in Tax Practice</a><br />
-							Note: Work 35 hours per week for a minimum of 10 weeks</p>
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">
+										<a name="3 credits" id="3 credits" data-toggle="collapse" class="text-default" href="#program-3credits" >Three-Credit Internships</a>
+									</h5>
+								</div>
+
+								<div id="program-3credits" class="collapse" data-parent="#program">
+									<div class="card-body">
+           								 <h3>Field-Based Learning</h3>
+
+           								 <p>Field-based learning is an important part of the graduate curriculum allowing students to gain valuable industry experience and networking opportunities. Students can explore interests, and use knowledge gained from coursework in their work environment.</p>
+
+           								 <p><strong>Field-based options include</strong></p>
+
+           								 <ul><li>Internships</li>
+           								 	<li>Courses with fieldwork projects</li>
+           								 	<li>Global Business Experience courses</li>
+           								 </ul><p>Students are, however, limited to taking no more than two of the following to satisfy elective or concentration requirements:</p>
+
+           								 <ul><li>Credit-bearing internships</li>
+           								 	<li>Field-based directed studies</li>
+           								 	<li>Global Business Experience courses</li>
+           								 </ul><p><strong>A three-credit internship is subject to the policies governing field-based learning</strong></p>
+
+           								 <ul><li>All required work for an internship must be completed during the term of registration</li>
+           								 	<li>MS and MBA students may only take a total of two field-based learning courses</li>
+           								 	<li>Dual Degree students may take a total of three field-based learning courses. However, only one field-based learning course can be shared across masters and MBA degrees</li>
+           								 	<li>A three-credit internship experience cannot be used to extend a one-credit internship; students completing both must clearly distinguish the two in terms of work responsibility and supervision</li>
+           								 	<li>A student may not take a one credit and three credit internship in the same semester</li>
+           								 </ul>
+           								 
+           								 <h3>Course Prerequisites</h3>
+           								 <table class="table table-bordered">
+           								 <tr>
+           								 	<th>Course Name</th>
+           								 	<th>Course Prerequisites</th>
+           								 </tr>
+           								 <tr>
+           								 	<td>AC 701 - Internship in Accounting Practice</td>
+           								 	<td>Prerequisites: 3 AC courses at the 600-level or higher<br/>
+           								 	<i>Note: Students are expected to work 35 hours per week for a minimum of eight weeks</i></td>
+           								 </tr>
+           								 <tr>
+           								 	<td>CS 701 - Internship in Information Technology</td>
+           								 	<td><i>Note: Not open to MSIT/MSDI students, they take CS 881</i></td>
+           								 </tr> 
+           								 <tr>
+           								 	<td>CS 881 - CIS Internship</td>
+           								 	<td>For MSIT/MSDI students: CS 602 and CS 605</td>
+           								 </tr>   
+           								 <tr>
+           								 	<td>EC 701 - Internship in Business Economics</td>
+           								 	<td> none </td>
+           								 </tr>
+           								 <tr>
+           								 	<td>ETH 701 - Internship in Business Ethics</td>
+           								 	<td> none </td>
+           								 </tr>
+           								 <tr>
+           								 	<td>FI 701 - Internship in Finance</td>
+           								 	<td> 2 FI courses at the 600-level or higher<br/>
+           								 		<i>Note: Students must work a minimum of 200 hours</i></td>
+           								 </tr>
+           								 <tr>
+           								 	<td>FP 781 - Internship in Financial Planning Practice</td>
+           								 	<td>2 FP courses at the 600-level or higher<br/>
+           								 	<i>Note: Students are expected to work 35 hours per week for a minimum of 10 weeks</i></td>
+           								 </tr>
+           								 <tr>
+           								 	<td>HF 790 - Internship in Human Factors in Information Design</td>
+           								 	<td>HF 700 and HF 750<br/>
+           								 <i>Note: Students are expected to work a minimum of 120 hours across one term</i></td>
+           								 </tr>
+           								 <tr>
+           								 	<td>IPM 701 - Internship in Information Process Management</td>
+           								 	<td>IPM 652 or GR 602</td>
+           								 </tr>
+           								 <tr>
+           								 	<td>MG 701 - Internship in Management</td>
+           								 	<td>none<br />
+           								 <i>Note: Students are expected to work a minimum of 200 hours across one term</i> </td>
+           								 </tr>
+           								 <tr>
+           								 	<td>MK 701 - Internship in Marketing Practice</td>
+           								 	<td>2 MK courses at the 600-level or higher<br />
+           								 <i>Note: Students are expected to work 12 hours per week for a minimum of 10 weeks</i></td>
+           								 </tr>
+           								 <tr>
+           								 	<td>ST 701 Internship in Business Data Analysis</td>
+           								 	<td>ST 635<br />
+           								 <i>Note: Students are expected to work 15 hours per week for a minimum of 12 weeks</i></td>
+           								 </tr>
+           								 <tr>
+           								 	<td>TX 781 Internship in Tax Practice</td>
+           								 	<td>2 TX courses at the 600-level or higher<br />
+           								 <i>Note: Work 35 hours per week for a minimum of 10 weeks</i></td>
+           								 </tr>           								          								           								 
+           								 </table>
+
+									</div>
+									</div>
+									</div>
+									
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">
+										<a name="1 credit" id="1 credit" data-toggle="collapse" class="text-default" href="#program-1credit" >One-Credit Internships</a>
+									</h5>
+								</div>
+
+								<div id="program-1credit" class="collapse" data-parent="#program">
+									<div class="card-body">
+										<h3>One-credit internship are subject to the following policies</h3>
+
+										<ul><li>All required work for an internship must be completed during the term of registration</li>
+											<li>Students are limited to a single one-credit internship</li>
+											<li>A one-credit internship experience cannot be used to extend a three-credit internship; students completing both must clearly distinguish the two in terms of work responsibility and supervision</li>
+											<li>All one-credit internships are 500-level courses; students should consult program guides for degree requirements</li>
+											<li>A student may not take a one credit and three credit internship in the same semester</li>
+										</ul><h3>Course Prerequisites</h3>
+
+           								 <table class="table table-bordered">
+           								 <tr>
+           								 	<th>Course Name</th>
+           								 	<th>Course Prerequisites</th>
+           								 </tr>
+           								 <tr>
+           								 	<td>AC 590 - Internship in Accounting Practic</td>
+           								 	<td>none <br/>
+           								 	<i>Note: Students must work a minimum of 15 hours per week for a minimum of 10 weeks</i></td>
+           								 </tr>	
+           								 <tr>
+           								 	<td>CS 590 - Internship in Information Technology</td>
+           								 	<td>none <br/>
+           								 	<i>Note: Students must work a minimum of 120 hours</i></td>
+           								 </tr>		
+           								 <tr>
+           								 	<td>FI 590 - Internship in Finance</td>
+           								 	<td>none <br/>
+           								 	<i>Note: Students must work a minimum of 200 hours</i></td>
+           								 </tr>
+           								 <tr>
+           								 	<td>FP 590 - Internship in Financial Planning Practice</td>
+           								 	<td>none <br/>
+           								 	<i>Note: Students must work a minimum of 15 hours per week for a minimum of 10 weeks</i></td>
+           								 </tr>
+           								 <tr>
+           								 	<td>HF 590 - Internship in HFID</td>
+           								 	<td>none <br/>
+           								 	<i>Note: Students must work a minimum of 120 hours</i></td>
+           								 </tr>	
+           								 <tr>
+           								 	<td>IPM 590 - Internship in Information Process Management</td>
+           								 	<td>none <br/>
+           								 	<i>Note: Students must work a minimum of 120 hours</i></td>
+           								 </tr>
+           								 <tr>
+           								 	<td>MG 590 - Internship in Management</td>
+           								 	<td>none <br/>
+           								 	<i>Note: Students must work a minimum of 200 hours</i></td>
+           								 </tr>
+           								 <tr>
+           								 	<td>MK590 - Internship in Marketing</td>
+           								 	<td>none <br/>
+           								 	<i>Note: Students must work a minimum of 120 hours</i></td>
+           								 </tr>
+           								 <tr>
+           								 	<td>ST 590 Internship in Statistics</td>
+           								 	<td>none <br/>
+           								 	<i>Note: Students must work a minimum of 120 hours</i></td>
+           								 </tr>
+           								 <tr>
+           								 	<td>TX 590 Internship in Tax Practice</td>
+           								 	<td>none <br/>
+           								 	<i>Note: Students must work a minimum of 15 hours per week for a minimum of 10 weeks</i></td>
+           								 </tr>
+           								 						
+
+									</div>
+								</div>
+							</div>	
+
+						<!-- /Program-specific Requirements -->
 
 						</div>
 				</div>
+				
 				<!-- /basic card -->
 
 			</div>
+			</div>
+			</div>
+			
 			<!-- /content area -->
 
 
@@ -230,6 +481,7 @@
 
 	</div>
 	<!-- /page content -->
+
 
 </body>
 </html>

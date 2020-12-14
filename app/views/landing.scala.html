@@ -1,4 +1,4 @@
-@(title: String)
+@(title: String)(implicit messages: Messages)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,8 +109,8 @@
 					            </div>
 					
 					            <div class="media-body">
-					                <h6 class="media-title font-weight-semibold">1. Sign up for an account on this page. (top right corner)</h6>
-					                Please make sure you have your student email and student ID ready.
+					                <h6 class="media-title font-weight-semibold">@messages("process0")</h6>
+					                @messages("process01")
 					            </div>				
 					        </li>
 					
@@ -120,8 +120,8 @@
 					            </div>
 					
 					            <div class="media-body">
-					                <h6 class="media-title font-weight-semibold">2. Fill in an internship application</h6>
-					                You will need the information on offer letter to complete the application
+					                <h6 class="media-title font-weight-semibold">@messages("process1")</h6>
+					                @messages("process11")
 					            </div>
 					        </li>
 					        
@@ -131,8 +131,8 @@
 					            </div>
 					
 					            <div class="media-body">
-					                <h6 class="media-title font-weight-semibold">3. schedule a meeting with academic advisor to confirm academic qualification</h6>
-					                <a href = "https://bentley.campus.eab.com/student/appointments/new"> Schedule an appointment</a>
+					                <h6 class="media-title font-weight-semibold">@messages("process2")</h6>
+					                @messages("process22")<a href = "https://bentley.campus.eab.com/student/appointments/new" target="_blank"> @messages("process21")</a>
 					            </div>
 					        </li>					        
 
@@ -142,8 +142,7 @@
 					            </div>
 					
 					            <div class="media-body">
-					                <h6 class="media-title font-weight-semibold">4. Your internship coordinator will review your application and approve it</h6>
-					                Internship coordinator is assigned based on the internship course you selected.
+					                <h6 class="media-title font-weight-semibold">@messages("process3")</h6>
 					            </div>
 					        </li>
 					        
@@ -153,10 +152,21 @@
 					            </div>
 					
 					            <div class="media-body">
-					                <h6 class="media-title font-weight-semibold">5. Dean will review and approve your application</h6>
-					                Internship coordinator is assigned based on the internship course you selected.
+					                <h6 class="media-title font-weight-semibold">@messages("process4") </h6>
+					                @messages("process41")
 					            </div>
-					        </li>					        
+					        </li>	
+					        
+					        <li class="media">
+					            <div class="mr-3">
+					                <a  class="btn bg-transparent border-success text-success rounded-round border-2 btn-icon"><i class="icon-checkmark3"></i></a>
+					            </div>
+					
+					            <div class="media-body">
+					                <h6 class="media-title font-weight-semibold">@messages("processint")</h6>
+					                @messages("processint1") <a href = "https://www.bentley.edu/offices/center-international-student-scholars/curricular-practical-training" target="_blank"> Learn more about CPT</a>
+					            </div>
+					        </li>					        				        
 					      
 					        <li class="media">
 					            <div class="mr-3">
@@ -164,9 +174,19 @@
 					            </div>
 					
 					            <div class="media-body">
-					                <h6 class="media-title font-weight-semibold">6. After Dean sends your application to Registar, you will see the internship course on your workday.</h6>
+					                <h6 class="media-title font-weight-semibold">@messages("process5") </h6>
 					            </div>
-					        </li>					      
+					        </li>			
+					        
+					        <li class="media">
+					            <div class="mr-3">
+					                <a  class="btn bg-transparent border-success text-success rounded-round border-2 btn-icon"><i class="icon-checkmark3"></i></a>
+					            </div>
+					
+					            <div class="media-body">
+					                <h6 class="media-title font-weight-semibold">@messages("process6") </h6>
+					            </div>
+					        </li>					        		      
 					        					    
 					    </ul>
 					</div>
