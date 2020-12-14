@@ -49,7 +49,9 @@ object Application extends DataStore  {
         description: String, coordinator_status: String = "pending", coordinator_email: Option[String], coordinator_comment: String, advisor_status: String = "pending",
         advisor_email: Option[String], advisor_comment: String, dean_status: String = "pending") = {
     
-    val coordinator_emailUpdate = Course.findCoor(course).toString
+    appLogger.info("course is: " + course)
+    val coordinator_emailUpdate = Course.findCoor(course)
+    appLogger.info("coordinator email is: " + coordinator_emailUpdate)
     
     val doc: Document = Document(
         "id" -> UUID.randomUUID().toString(),
