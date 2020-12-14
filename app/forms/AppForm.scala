@@ -12,7 +12,6 @@ object AppForm {
           "name" -> nonEmptyText,
           "email" -> email,
           "international" -> boolean,
-          "cpt" -> boolean,
           "major" -> nonEmptyText,
           "concentration" -> optional(text),
           "studentId" -> nonEmptyText,
@@ -21,8 +20,6 @@ object AppForm {
           "position" -> nonEmptyText,
           "start" -> date,
           "end" -> date,
-//          "offer_ids" -> optional(text),  
-//          "offer_format" -> optional(text),
           "credit_type" -> nonEmptyText,
           "course" ->nonEmptyText,
           "description" -> nonEmptyText,
@@ -31,7 +28,8 @@ object AppForm {
           "coordinator_comment" -> nonEmptyText,
           "advisor_status" -> nonEmptyText,
           "advisor_email" -> optional(text),
-          "advisor_comment" -> nonEmptyText
+          "advisor_comment" -> nonEmptyText,
+          "dean_status" -> nonEmptyText
           )(Data.apply)(Data.unapply)
         )
   
@@ -40,7 +38,6 @@ object AppForm {
         name: String,
         email: String,
         international: Boolean,
-        cpt: Boolean,
         major: String,
         concentration: Option[String],
         studentId:String,
@@ -49,8 +46,6 @@ object AppForm {
         position: String,
         start: java.util.Date,
         end: java.util.Date,
-//        offer_ids: Option[String],  
-//        offer_format: Option[String],
         credit_type: String,
         course: String,
         description: String,
@@ -59,7 +54,8 @@ object AppForm {
         coordinator_comment: String,
         advisor_status: String,
         advisor_email: Option[String],
-        advisor_comment: String
+        advisor_comment: String,
+        dean_status:String
         )
   
 }

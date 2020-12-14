@@ -80,4 +80,11 @@ object Course extends DataStore with CloudinaryCDN {
     coll.find().results()
   }
   
+  //matching coordinator's email
+  def findCoor(course:String){
+    val rec = coll.find(equal("CourseID", course)).first().headResult()
+    val ic = rec.InternshipCoordinator
+    ic
+  }
+  
 }

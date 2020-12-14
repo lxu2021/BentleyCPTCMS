@@ -65,6 +65,7 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
         }
                 
       }
+
       
         //only logged-in advisor users can view dashboard
 //        var res = Try(Some(Application.findAdvisorEmail(username.get))).getOrElse(None)
@@ -77,6 +78,18 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
 //             Ok(views.html.landing("Homepage"))          
 //          }
 //        }
+
+
+      case "ciss"             => {
+        val res = Application.findInternational()
+        appLogger.info("Result is: " + res)
+        Ok(views.html.ciss("CISS", acct, res))
+      }
+      case "dean"             => {
+        val res = Application.findForDean()
+        appLogger.info("Result is: " + res)
+        Ok(views.html.dean("Dean", acct, res))
+      }
 
       case "login"                   => Ok(views.html.login(LoginForm.form,"Login"))
       case "dashboard"               => {
