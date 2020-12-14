@@ -17,7 +17,7 @@ POST  /advisorUpdate             controllers.AdvisorReviewController.formSubmit
 GET   /coordinator/update/:id	controllers.CoordinatorReviewController.update(id)
 GET   /coordinator/review/:id    controllers.CoordinatorReviewController.review(id)
 POST  /coordinatorUpdate		    controllers.CoordinatorReviewController.formSubmit
-#GET   /dean/review/:id    		controllers.DeanReviewController.review(id)
+GET   /dean/review/:id    		controllers.DeanReviewController.review(id)
 #POST  /deanUpdate		    		controllers.DeanReviewController.formSubmit
 
 

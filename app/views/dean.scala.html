@@ -1,0 +1,67 @@
+@(topic: String, acct: Option[model.db.collections.Account], res: Seq[model.db.collections.Application])(implicit messages: Messages, flash: Flash)
+
+@main(topic){
+	<div class="navbar-nav-link d-flex align-items-center">
+        <a><span style="margin:10px;">@acct.get.Email</span></a>
+   		<a href="/logout">@messages("logout")</a>
+   </div>
+
+}{
+ <p><span style = "font-size:24px;">@acct.get.Name</span>
+ <br>( @acct.get.AccountType )</p>
+}{
+  <div class="content">
+    <!-- Stats with progress -->
+    <div class="mb-3 pt-2">
+      <h6 class="mb-0 font-weight-semibold">
+      	Applications for Review
+      </h6>
+    </div>
+    <div>
+      <div class="card">
+        <div class="table-responsive">
+          <table class="table text-nowrap">
+            <thead>
+              <tr>
+              	<th style="width: 50px">Status</th>
+                <th style="width: 300px;">Student</th>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+            @res.map { item =>  
+              <tr>
+              	<td class="text-center">
+                  <div class="font-size-sm text-muted line-height-1">@item.dean_status.capitalize</div>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <a href=dean/review/@item.id class="text-default font-weight-semibold letter-icon-title">@item.name</a>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-default">
+                    <div class="font-weight-semibold">@item.description</div>
+                  </div>
+                </td>
+                <td>
+                 <a href=dean/review/@item.id class="text-default font-weight-semibold letter-icon-title">Review</a> 
+                </td>
+              </tr>
+              
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+ 
+   </div>
+    
+
+
+}

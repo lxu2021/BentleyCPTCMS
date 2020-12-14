@@ -24,7 +24,7 @@ import model.db.mongo.DataStore
 //Play
 import play.api.Logger
 
-case class Course (id: String, CourseID: String, Name: String, Credits: Int, InternshipCoordinator: String)
+case class Course (id: String, CourseID: String, Name: String, Credits: String, InternshipCoordinator: String)
     
 object Course extends DataStore with CloudinaryCDN {
   
@@ -40,7 +40,7 @@ object Course extends DataStore with CloudinaryCDN {
   val listings: MongoCollection[Document] = database.getCollection("Course")
 
   //Creating new application
-  def createCourse(id: String, CourseID: String, Name: String, Credits: Int, InternshipCoordinator: String) = {
+  def createCourse(id: String, CourseID: String, Name: String, Credits: String, InternshipCoordinator: String) = {
     
     val doc: Document = Document(
         "id" -> UUID.randomUUID().toString(),
