@@ -170,7 +170,7 @@
 
               <tr>
                 <td class="text-center">
-                  @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else {<p style="color:green;">@res.get.advisor_status}</p>
+                  @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else {<p style="color:green;">@res.get.advisor_status.capitalize}</p>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
@@ -189,7 +189,7 @@
               <tr>
                 <td class="text-center">
                   <i class="icon-cross2 text-danger-400"></i>
-                  @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else {<p style="color:green;">@res.get.coordinator_status}</p>
+                  @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else {<p style="color:green;">@res.get.coordinator_status.capitalize}</p>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">

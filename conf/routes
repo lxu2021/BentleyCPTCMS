@@ -11,7 +11,7 @@ GET   /:page                     controllers.HomeController.loadPage(page)
 POST  /applicationForm           controllers.FormController.formSubmit
 GET   /review/:id                controllers.ReviewController.review(id)
 #POST  /review/:id               controllers.ReviewController.processReview(id)
-GET   /advisor/update/:id        controllers.AdvisorReviewController.update(id)
+#GET   /advisor/update/:id        controllers.AdvisorReviewController.update(id)
 GET   /advisor/review/:id        controllers.AdvisorReviewController.review(id)
 POST  /advisorUpdate             controllers.AdvisorReviewController.formSubmit
 GET   /coordinator/update/:id	controllers.CoordinatorReviewController.update(id)
@@ -20,6 +20,8 @@ POST  /coordinatorUpdate		controllers.CoordinatorReviewController.formSubmit
 GET   /dean/review/:id    		controllers.DeanReviewController.review(id)
 POST  /deanUpdate		    	controllers.DeanReviewController.formSubmit
 
+GET   /update/:id        controllers.ReviewController.update(id)
+POST  /studentUpdate             controllers.ReviewController.formSubmit
 
 # Map static resources from the /public folder to the /assets URL path
 GET   /assets/*file   controllers.Assets.versioned(path="/public", file: Asset)

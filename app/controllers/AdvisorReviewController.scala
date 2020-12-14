@@ -10,6 +10,7 @@ import play.api.data._
 import play.api.data.Forms._
 import play.api.i18n.{ Lang, Langs, I18nSupport, Messages, MessagesApi, MessagesProvider, MessagesImpl }
 import forms.AdvisorForm
+import forms.ReviewForm
 import forms.AppForm
 import model.db.collections.Application
 import model.db.collections.Account
@@ -24,6 +25,7 @@ class AdvisorReviewController @Inject() (cc: ControllerComponents) extends Abstr
   //Setup an application logger
   val appLogger: Logger = Logger("form")
   
+  //This provides the advisor a review of the student application and option to add comments and change advisor's status
   def review(id:String) = Action { implicit request: Request[AnyContent] =>
 
     val username = request.session.get("username")
@@ -34,15 +36,17 @@ class AdvisorReviewController @Inject() (cc: ControllerComponents) extends Abstr
   }
   
 
- def update(id:String) = Action { implicit request: Request[AnyContent] =>
-
-    val username = request.session.get("username")
-    val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
-    val res = Try(Some(Application.findIdRecord(id))).getOrElse(None)
-          
-       Ok(views.html.advisorform(AppForm.form, "Advisor Form Update", acct, res))
-   }
+  //This all
+// def update(id:String) = Action { implicit request: Request[AnyContent] =>
+//
+//    val username = request.session.get("username")
+//    val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
+//    val res = Try(Some(Application.findIdRecord(id))).getOrElse(None)
+//          
+//       Ok(views.html.advisorform(AppForm.form, "Advisor Form Update", acct, res))
+//   }
  
+ //This submits the updates made by the advisor on an application
  def formSubmit() = Action{implicit request =>
      AdvisorForm.form.bindFromRequest.fold(
          formWithErrors => Ok(formWithErrors.toString),
@@ -53,6 +57,8 @@ class AdvisorReviewController @Inject() (cc: ControllerComponents) extends Abstr
             Redirect("/advisor")    
           })
    }
+ 
+
 
 
 

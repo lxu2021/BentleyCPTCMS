@@ -1,0 +1,126 @@
+@(res: Option[model.db.collections.Application], page: String, acct: Option[model.db.collections.Account], appForm: Form[forms.ReviewForm.Data])(implicit request: RequestHeader, messages: Messages, flash: Flash)
+@import b4.vertical.fieldConstructor
+@import java.time.format.DateTimeFormatter
+@implicitFieldConstructor = @{ b4.vertical.fieldConstructor() }
+
+@main(page){
+	<div class="navbar-nav-link d-flex align-items-center">
+        <a><span style="margin:10px;">@acct.get.Email</span></a>
+   		<a href="/logout">@messages("logout")</a>
+   </div>
+}{
+ <p><span style = "font-size:24px;">@acct.get.Name</span>
+ <br>( @acct.get.AccountType )</p>
+}{
+<div class="content">
+	
+	@*in order to create and update the form: Need to create a if statement like the superhero-testing create view*@
+	@b4.vertical.formCSRF(routes.ReviewController.formSubmit(), 'id -> "AdvisorForm", 'class -> "wizard-form steps-validation wizard clearfix") {implicit vfc =>
+		<div class="card" style="padding:30px;">
+      		<div class="card-header bg-white header-elements-inline">
+        			<h5 class="card-title">Application Form</h5>
+        			<div class="header-elements">
+
+        			</div>
+      		</div>
+      		<br>
+      		<h6>Personal data</h6>
+      		<br>
+      		<div class="row">
+      		<div class="col-md-6" style="display:None";>
+      		<div class="form-group">
+						@b4.text(appForm("id"), '_label -> "Application ID", 'class -> "form-control required", 'value -> {res.get.id})
+           			</div>
+      		</div>
+      			<div class="col-md-6">
+        				<div class="form-group">
+                			@b4.text(appForm("name"), '_label -> "Student Name*", 'class -> "form-control required", 'placeholder -> "John Doe", 'value -> {res.get.name})
+        				</div>
+       			</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						@b4.text(appForm("email"), '_label -> "Email Address*", 'class -> "form-control required", 'value -> {acct.get.Email})
+           			</div>
+       			</div>
+			</div>
+          	<div class="row">
+            		<div class="col-md-6">
+              		<div class="form-group">
+                			@b4.radio(appForm("international"), options = Seq("true" -> "Yes", "false" -> "No"),'_label -> "International Student?*", 'value -> {res.get.international})              
+              		</div>
+            		</div>
+			</div>
+			
+			<br>
+			<h6>Education</h6>
+        		<br>
+          	<div class="row">
+            		<div class="col-md-6">
+              		<div class="form-group">
+                			@b4.select(appForm("major"), options = Seq("n/a"-> "","MBA" -> "MBA", "MSA" -> "MSA", "MSAA" -> "MSAA", "MSBA" -> "MSBA", "MSF" -> "MSF", "MSHFID" -> "MSHFID", "MST" -> "MST", "MSDI" -> "MSDI"),'class -> "form-control required", '_label -> "Major*", 'value -> {res.get.major})
+              		</div>
+            		</div>
+
+            		<div class="col-md-6">
+              		<div class="form-group">
+                			@b4.select(appForm("concentration"), options = Seq("n/a"-> "", "N/A" -> "N/A", "Accountancy" -> "Accountancy", "Business Analytics" -> "Business Analytics", "Finance" -> "Finance", "Information Systems and Technology" -> "Information Systems and Technology", "Law and Taxation" -> "Law and Taxation", "Leadership" -> "Leadership", "Marketing" -> "Marketing"),'class -> "form-control required", '_label -> "MBA Concentration(if applicable)", 'value -> {res.get.concentration.get})
+              		</div>
+            		</div>
+          	</div>
+
+          	<div class="row">
+          		<div class="col-md-6">
+              		<div class="form-group">
+                			@b4.text(appForm("studentId"), '_label -> "StudentID*", 'class -> "form-control required", 'placeholder -> "E04010000", 'value -> {res.get.studentId})
+              		</div>
+            		</div>
+            		<div class="col-md-6">
+              		<div class="form-group">
+                			@b4.text(appForm("gpa"), '_label -> "Overall GPA(out of 4.0)*", 'class -> "form-control required", 'placeholder -> "4.0", 'value -> {try {res.get.gpa.get } catch { case _ => None }})
+              		</div>
+            		</div>
+            	</div>
+
+			<br>
+        		<h6>Internship Details</h6>
+        		<br>
+          	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+              			@b4.radio(appForm("credit_type"), options = Seq("1-cred" -> "1 credit", "3-cred" -> "3 credits"), '_label -> "Which type of internship you apply for?*", 'value -> {res.get.credit_type})
+              		</div>
+              		<div class="form-group">
+                			@b4.text(appForm("company"), '_label -> "Company*", 'class -> "form-control required", 'placeholder -> "company name", 'value -> {res.get.company})
+              		</div>
+
+              		<div class="form-group">
+                			@b4.text(appForm("position"), '_label -> "Internship Position*", 'class -> "form-control required", 'placeholder -> "Data Analytics Intern", 'value -> {res.get.position})
+              		</div>
+            		</div>
+
+            		<div class="col-md-6">            		
+              		<div class="form-group">
+              			@b4.select(appForm("course"), options = Seq("none"-> "","AC701" -> "AC701", "AC590" -> "AC590", "CS701" -> "CS701", "CS590" -> "CS590", "CS881" -> "CS881", "EC701" -> "EC701", "ES701" -> "ES701", "ETH701" -> "ETH701", "FI701" -> "FI701", "FI590" -> "FI590", "FG781" -> "FP781", "FP590" -> "FP590","IB701" -> "IB701", "IPM701" -> "IPM701", "IPM590" -> "IPM590", "HF790" -> "HF790", "HF590" -> "HF590", "MG701" -> "MG701", "MG590" -> "MG590", "MK701" -> "MK701", "MK590" -> "MK590", "ST701" -> "ST701", "ST590" -> "ST590", "TX781" -> "TX781", "TX590" -> "TX590"), 'class -> "form-control required",'_label -> "Which internship course you apply for?*", 'value -> {res.get.course})
+              		</div>
+              		<div class="form-group">
+              			@b4.select(appForm("advisor_email"), options = Seq("none"-> "","ishosho@bentley.edu" -> "Shosho, Iva", "ssimeone@bentley.edu" -> "Simeone, Sara", "nblack@bentley.edu" -> "Black, Nicole"), 'class -> "form-control required",'_label -> "Choose an academic advisor that you want to meet with*:", 'value -> {res.get.advisor_email.get})
+              		</div>
+              		<div class="form-group">
+                			@b4.textarea(appForm("description"), '_label -> "How this intenship related to your program*", 'class -> "form-control required", 'placeholder -> "It is a ...", 'rows -> "5", 'cols -> "4", 'value -> {res.get.description})
+              		</div>
+
+            		</div>
+          	</div>
+
+          	<div class = "row">
+          		<button type="submit" class="btn btn-primary legitRipple" role="button" action="submit"> @messages("submit") </button>
+          		<a href=/dashboard class="btn btn-default"> <span class="fa fa-times" aria-hidden="true"></span> @messages("cancel")</a>
+          	</div>
+        </div>
+         
+
+  }
+ 	</div>
+          <!-- /wizard with validation -->
+  <!-- /content area -->
+}

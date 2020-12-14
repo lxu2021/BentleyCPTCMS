@@ -153,6 +153,19 @@ object Application extends DataStore  {
     
   }
   
+  def studentUpdate(id:String, name: String, email: String, international: Boolean, major: String, concentration: Option[String], studentId:String,
+        gpa: Option[Double], company: String, position: String,credit_type: String, course:String,
+        description: String, advisor_email: Option[String])={
+        val oldApp = Application.findIdRecord(id)
+        val newApp = Application(id,name,email,international,major, concentration, studentId,
+                                      gpa,company,position, oldApp.start, oldApp.end,credit_type, course, description,
+                                      oldApp.coordinator_status, oldApp.coordinator_email, oldApp.coordinator_comment, oldApp.advisor_status, advisor_email, oldApp.advisor_comment,
+                                      oldApp.dean_status)
+        Application.update(newApp)
+    
+    
+  }
+  
   //Update coordinator comment and status 
   def coordinatorUpdate(applicationID:String, coordinator_status:String, coordinator_comment:String) = {
     appLogger.info("Updating advisor result" )
