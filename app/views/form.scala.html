@@ -17,13 +17,13 @@
 	@b4.vertical.formCSRF(routes.FormController.formSubmit(), 'id -> "appForm", 'class -> "wizard-form steps-validation wizard clearfix") {implicit vfc =>
 		<div class="card" style="padding:30px;">
       		<div class="card-header bg-white header-elements-inline">
-        			<h5 class="card-title">Application Form</h5>
+        			<h4 class="card-title">Application Form</h4>
         			<div class="header-elements">
 
         			</div>
       		</div>
       		<br>
-      		<h6>Personal data</h6>
+      		<h5>Personal data</h5>
       		<br>
       		<div class="row">
       			<div class="col-md-6">
@@ -33,7 +33,7 @@
        			</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						@b4.text(appForm("email"), '_label -> "Email Address*", 'class -> "form-control required", 'value -> {acct.get.Email})
+						@b4.text(appForm("email"), '_label -> "Email Address*", 'class -> "form-control required", 'readonly -> true,'value -> {acct.get.Email})
            			</div>
        			</div>
 			</div>
@@ -46,7 +46,7 @@
 			</div>
 			
 			<br>
-			<h6>Education</h6>
+			<h5>Education</h5>
         		<br>
           	<div class="row">
             		<div class="col-md-6">
@@ -76,7 +76,7 @@
             	</div>
 
 			<br>
-        		<h6>Internship Details</h6>
+        		<h5>Internship Details</h5>
         		<br>
           	<div class="row">
             		<div class="col-md-6">

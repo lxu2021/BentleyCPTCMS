@@ -38,10 +38,10 @@ object Application extends DataStore  {
   val codecRegistry = fromRegistries(fromProviders(classOf[Application]), DEFAULT_CODEC_REGISTRY)
 
   //Using Case Class to get a collection - Test
-  val coll: MongoCollection[Application] = database.withCodecRegistry(codecRegistry).getCollection("ApplicationTest")
+  val coll: MongoCollection[Application] = database.withCodecRegistry(codecRegistry).getCollection("Application")
   
   //Using Document to get collection - Test
-  val listings: MongoCollection[Document] = database.getCollection("ApplicationTest")
+  val listings: MongoCollection[Document] = database.getCollection("Application")
 
   //Creating new application
   def createApplication(name: String, email: String, international: Boolean, major: String, concentration: Option[String], studentId:String,
@@ -69,14 +69,14 @@ object Application extends DataStore  {
         "credit_type" -> credit_type,
         "course" -> course,
         "description" -> description,
-        "created" -> new Date(),
         "coordinator_status" -> coordinator_status,
         "coordinator_email" -> coordinator_emailUpdate,
         "coordinator_comment" -> coordinator_comment,
         "advisor_status" -> advisor_status,
         "advisor_email" -> advisor_email,
         "advisor_comment" -> advisor_comment,
-        "dean_status" -> dean_status)
+        "dean_status" -> dean_status,
+        "created" -> new Date())
         
     val observable: Observable[Completed] = listings.insertOne(doc)
 

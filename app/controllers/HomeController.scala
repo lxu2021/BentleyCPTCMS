@@ -54,7 +54,7 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
       
       case "advisor"             => {
         val res = Application.findAdvisorEmail(username.get)
-        appLogger.info("Result is: " + res)
+        appLogger.info("Advisor is: " + res)
         
         //only advisor can view advisor page
         if (acct.get.AccountType == "Advisor"){
@@ -62,33 +62,31 @@ class HomeController @Inject() (cc: ControllerComponents) extends AbstractContro
         Ok(views.html.advisor("Advisor", acct, res))
         }else{
           Ok(views.html.landing("Homepage"))          
-        }
-                
+        }                
       }
-
-      
-        //only logged-in advisor users can view dashboard
-//        var res = Try(Some(Application.findAdvisorEmail(username.get))).getOrElse(None)
-//        
-//          if (username != None && acct.get.AccountType == "Advisor") {
-//          var res = Try(Some(Application.findAdvisorEmail(username.get))).getOrElse(None)
-//          appLogger.info("Application Info: " + res)
-//          Ok(views.html.advisor("Advisor", acct, res))
-//          }else{
-//             Ok(views.html.landing("Homepage"))          
-//          }
-//        }
-
-
+     
       case "ciss"             => {
         val res = Application.findInternational()
-        appLogger.info("Result is: " + res)
+        
+        //only CISS can view the CISS page
+        if(acct.get.AccountType == "CISS"){
+        appLogger.info("CISS is: " + res)
         Ok(views.html.ciss("CISS", acct, res))
+        }else{
+          Ok(views.html.landing("Homepage"))
+        }
       }
+      
       case "dean"             => {
         val res = Application.findForDean()
-        appLogger.info("Result is: " + res)
+        
+        //only Dean can view the Dean page
+        if (acct.get.AccountType == "Dean") {
+        appLogger.info("Dean is: " + res)
         Ok(views.html.dean("Dean", acct, res))
+        }else {
+          Ok(views.html.landing("Homepage"))
+        }
       }
 
       case "login"                   => Ok(views.html.login(LoginForm.form,"Login"))

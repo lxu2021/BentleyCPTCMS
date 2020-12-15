@@ -1,7 +1,6 @@
 @(topic: String, acct: Option[model.db.collections.Account], res: Option[model.db.collections.Application])(implicit messages: Messages, flash: Flash)
 @import scala.util.Try
 
-@*(coordinator_status:String, advisor_status:String)*@ 
 
 @main(topic){
 	<div class="navbar-nav-link d-flex align-items-center">
@@ -27,10 +26,10 @@
         <!-- Orders processed -->
         <div class="card card-body text-center bg-teal-400 has-bg-image">
           <div class="svg-center position-relative" id="progress_icon_three"></div>
-          <h2 class="progress-percentage mt-2 mb-1 font-weight-semibold">@messages("percentage")</h2> 
+          <h2 class="progress-percentage mt-2 mb-1 font-weight-semibold">@if(res.get == null){0}else if(res.get.advisor_status == "approved"){50} else if(res.get.coordinator_status == "approved"){83} else if(res.get.dean_status == "approved"){100} else {17}@messages("percentage")</h2> 
 
           Application Processed
-          <div class="font-size-sm opacity-75">@messages("task_complete_count") tasks completed</div>
+          <div class="font-size-sm opacity-75">@if(res.get == null){0}else if(res.get.advisor_status == "approved"){3} else if(res.get.coordinator_status == "approved"){5} else if(res.get.dean_status == "approved"){6} else {1} tasks completed</div>
         </div>
         <!-- /orders processed -->
       </div>
@@ -73,7 +72,7 @@
 
               <tr>
                 <td class="text-center">
-                  <input type="checkbox" class="font-size-sm text-muted line-height-1"><span> </span>
+                  <p style="color:red;"><b>@messages("incomplete")</b></p>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
@@ -146,7 +145,7 @@
                     <div class="mr-3">
                     </div>
                     <div>
-                     @if(res.get == null) {<a href="form" >@messages("process1")</a>} else { <a href="/review/@res.get.id"> @messages("review")</a>}              
+                     @if(res.get == null) {<a href="form" >@messages("process1")</a>} else { <a href="/review/@res.get.id"> @messages("review") </a>}              
                     </div>
                   </div>
                 </td>
@@ -155,7 +154,7 @@
 
               <tr>
                 <td class="text-center">
-                  <input type="checkbox" class="font-size-sm text-muted line-height-1"><span> </span>
+                @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else if(res.get.advisor_status == "pending") {<p style="color:orange;"> Pending} else {<p style="color:green;">@messages("complete")}</p>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
@@ -170,7 +169,7 @@
 
               <tr>
                 <td class="text-center">
-                  @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else {<p style="color:green;">@res.get.advisor_status.capitalize}</p>
+                  @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else if(res.get.advisor_status == "pending") {<p style="color:orange;"> Pending} else if(res.get.advisor_status == "rejected") {<p style="color:Red;"> @res.get.advisor_status.capitalize} else {<p style="color:green;">@res.get.advisor_status.capitalize}</p>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
@@ -189,7 +188,7 @@
               <tr>
                 <td class="text-center">
                   <i class="icon-cross2 text-danger-400"></i>
-                  @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else {<p style="color:green;">@res.get.coordinator_status.capitalize}</p>
+                  @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else if(res.get.coordinator_status == "pending") {<p style="color:orange;"> Pending} else if(res.get.coordinator_status == "rejected") {<p style="color:Red;"> @res.get.coordinator_status.capitalize}else {<p style="color:green;">@res.get.coordinator_status.capitalize}</p>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
@@ -206,7 +205,7 @@
               
                <tr>
                 <td class="text-center">
-                  <p style="color:red;"><b>@messages("incomplete")</b></p>
+                  @if(res.get == null) {<p style="color:red;"><b>@messages("incomplete")</b></p>} else if(res.get.dean_status == "pending") {<p style="color:orange;"> Pending}else if(res.get.dean_status == "rejected") {<p style="color:Red;"> @res.get.dean_status.capitalize}else{<p style="color:green;">@res.get.dean_status.capitalize}</p>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">

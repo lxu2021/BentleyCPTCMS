@@ -34,7 +34,7 @@
               @if(item.coordinator_status=="pending") {
               <tr>
                 <td class="text-center">
-                  <div class="font-size-sm text-muted line-height-1">@item.coordinator_status.capitalize</div>
+                  <div class="font-size-sm text-muted line-height-1"><p style="color:orange;">@item.coordinator_status.capitalize</p></div>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
@@ -83,7 +83,7 @@
               @if(item.coordinator_status=="rejected") {
               <tr>
                 <td class="text-center">
-                  <div class="font-size-sm text-muted line-height-1">@item.coordinator_status.capitalize</div>
+                  <div class="font-size-sm text-muted line-height-1" ><p style="color:red;">@item.coordinator_status.capitalize</p></div>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
@@ -132,7 +132,7 @@
               @if(item.coordinator_status=="approved") {
               <tr>
                 <td class="text-center">
-                  <div class="font-size-sm text-muted line-height-1">@item.coordinator_status.capitalize</div>
+                  <div class="font-size-sm text-muted line-height-1"><p style="color:green;">@item.coordinator_status.capitalize</p></div>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">

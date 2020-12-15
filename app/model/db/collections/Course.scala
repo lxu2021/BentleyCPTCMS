@@ -28,7 +28,7 @@ import play.api.Logger
 
 case class Course (id: String, CourseID: String, Name: String, Credits: String, InternshipCoordinator: String)
     
-object Course extends DataStore with CloudinaryCDN {
+object Course extends DataStore {
   
   val appLogger: Logger = Logger("application")
 
