@@ -39,7 +39,7 @@ processint1	= Make sure that you select CPT in your application if you need to a
 process5 	= 5. Dean will review and approve your application.
 process6 	= 6. After Dean sends your application to Registrar, you will see the internship course on your workday.
 
-review = 1. Review Your Completed Application
+review = 1. Review/Update Your Completed Application
 
 #course
 ac_590_link = http://academics.bentley.edu/departments/accountancy/graduate-courses-accounting#AC_590
