@@ -33,7 +33,7 @@ process3 	= 3. Your Academic Advisor will review your application and approve it
 process4 	= 4. Your internship coordinator will review your application and approve it
 process41	= Internship coordinator is assigned based on the internship course you selected.
 
-processint	= * If you are an international student, after intership coordinator approved your application, CISS will review you application for CPT.
+processint	= *(If you are an international student), after internship coordinator approved your application, CISS will review you application for CPT.
 processint1	= Make sure that you select CPT in your application if you need to apply for CPT.
 
 process5 	= 5. Dean will review and approve your application.

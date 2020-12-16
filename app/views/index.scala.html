@@ -26,10 +26,10 @@
         <!-- Orders processed -->
         <div class="card card-body text-center bg-teal-400 has-bg-image">
           <div class="svg-center position-relative" id="progress_icon_three"></div>
-          <h2 class="progress-percentage mt-2 mb-1 font-weight-semibold">@if(res.get == null){0}else if(res.get.advisor_status == "approved"){50} else if(res.get.coordinator_status == "approved"){83} else if(res.get.dean_status == "approved"){100} else {17}@messages("percentage")</h2> 
+          <h2 class="progress-percentage mt-2 mb-1 font-weight-semibold">@if(res.get == null){0}else if(res.get.dean_status == "approved"){100}else if(res.get.coordinator_status == "approved"){80} else if(res.get.advisor_status == "approved"){60} else {17}@messages("percentage")</h2> 
 
           Application Processed
-          <div class="font-size-sm opacity-75">@if(res.get == null){0}else if(res.get.advisor_status == "approved"){3} else if(res.get.coordinator_status == "approved"){5} else if(res.get.dean_status == "approved"){6} else {1} tasks completed</div>
+          <div class="font-size-sm opacity-75">@if(res.get == null){6}else if(res.get.dean_status == "approved"){0} else if(res.get.coordinator_status == "approved"){1} else if(res.get.advisor_status == "approved"){2} else {1} tasks need to be completed</div>
         </div>
         <!-- /orders processed -->
       </div>
