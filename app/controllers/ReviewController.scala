@@ -45,9 +45,6 @@ class ReviewController @Inject() (cc: ControllerComponents) extends AbstractCont
   }
   
   
-  
-  
-  
   //Submits the updated student application when a student updates their application. 
   //Only fields that are editable by the student are made available 
   //The student's application is identified by the unique application id ("id")

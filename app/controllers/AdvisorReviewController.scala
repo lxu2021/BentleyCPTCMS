@@ -38,28 +38,6 @@ class AdvisorReviewController @Inject() (cc: ControllerComponents) extends Abstr
     
     Ok(views.html.advisorreview(res, "Advisor Application Review",acct, AppForm.form ))
   }
-  
-
-// def update(id:String) = Action { implicit request: Request[AnyContent] =>
-//
-//    val username = request.session.get("username")
-//    val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
-//    val res = Try(Some(Application.findIdRecord(id))).getOrElse(None)
-//          
-//       Ok(views.html.advisorform(AppForm.form, "Advisor Form Update", acct, res))
-//   }
- 
- //This submits the updates made by the advisor on an application
-
-// showing the student's application to make a change on the status
- def update(id:String) = Action { implicit request: Request[AnyContent] =>
-
-    val username = request.session.get("username")
-    val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
-    val res = Try(Some(Application.findIdRecord(id))).getOrElse(None)
-          
-       Ok(views.html.advisorform(AppForm.form, "Advisor Form Update", acct, res))
-   }
  
  //post the advisor status to the application form
 

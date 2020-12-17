@@ -47,9 +47,7 @@ object Account extends DataStore with CloudinaryCDN {
    * Unique Email is used to find the existing document
    */
   def update(newAccount: Account) = {
-
     coll.findOneAndReplace(equal("Email", newAccount.Email), newAccount).results()
-
   }
 
   /**
@@ -58,27 +56,21 @@ object Account extends DataStore with CloudinaryCDN {
   def deleteRecord(recEmail: String) = {
     coll.deleteOne(equal("Email", recEmail)).printHeadResult("Delete Result: ")
   }
-
-    
+   
   /**
    * Find a single record based on its unique email
    */
   def findRecord(recEmail: String) = {
-
     val rec = coll.find(equal("Email", recEmail)).first().headResult()
     appLogger.info("Result  is: " + rec)
     rec
-
   }
   
-
   /**
    * Retrieve all documents in the collection
    */
   def findAll() = {
-
     coll.find().results()
-
   }
 
   

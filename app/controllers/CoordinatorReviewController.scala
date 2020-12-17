@@ -33,16 +33,6 @@ class CoordinatorReviewController @Inject() (cc: ControllerComponents) extends A
     
     Ok(views.html.coordinatorreview(res, "Coordinator Application Review",acct, AppForm.form))
   }
-  
-// showing the student's application to make a change on the status
- def update(id:String) = Action { implicit request: Request[AnyContent] =>
-
-    val username = request.session.get("username")
-    val acct = Try(Some(Account.findRecord(username.get))).getOrElse(None)
-    val res = Try(Some(Application.findIdRecord(id))).getOrElse(None)
-          
-       Ok(views.html.coordinatorform(AppForm.form, "Coordinator Form Update", acct, res))
-   }
  
  //post the coordinator status to the application form
  def formSubmit() = Action{implicit request =>
