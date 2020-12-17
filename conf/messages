@@ -12,34 +12,28 @@ complete = Completed
 incomplete = Incomplete
 
 
-# for coordinator
-num_applications_left = 3
-num_applications_done = 2
-application_deadline = April 1, 2021
-
 #for student
 process0 	= *   Log in to your account from this page (top right corner).
 process01	= Please make sure you have your student email and student ID ready.
 
-process1 	= 1. Fill in Your Application Form
+process1 	= 1. Fill in your application form
 process11	= You will need the information on your offer letter to complete the application
 
 process2	= 2. Set up an appointment with your academic advisor to confirm academic qualification
 process21	= Schedule an appointment
-process22	= Make sure you schedule an appointment with the academic advisor you selected in your application
+process22	= Make sure you schedule an appointment with the academic advisor you selected in your application. 
 
-process3 	= 3. Your Academic Advisor will review your application and approve it
+process3 	= 3. Your academic advisor will review your application and approve it
 
 process4 	= 4. Your internship coordinator will review your application and approve it
 process41	= Internship coordinator is assigned based on the internship course you selected.
 
-processint	= *(If you are an international student), after internship coordinator approved your application, CISS will review you application for CPT.
+processint	= *(If you are an international student) After internship coordinator approved your application, CISS will review your application for CPT and provide you a new I-20.
 processint1	= Make sure that you select CPT in your application if you need to apply for CPT.
 
 process5 	= 5. Dean will review and approve your application.
-process6 	= 6. After Dean sends your application to Registrar, you will see the internship course on your workday.
+process6 	= 6. After dean sends your application to Registrar, you will see the internship course on your workday.
 
 review = 1. Review/Update Your Completed Application
 
-#course
-ac_590_link = http://academics.bentley.edu/departments/accountancy/graduate-courses-accounting#AC_590
+
